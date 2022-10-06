@@ -8,39 +8,24 @@ use App\Http\Controllers\VideoController;
 use App\Http\Controllers\superadmin\DashboardController;
 use App\Http\Controllers\UploadController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
 
 Route::post('upload', [UploadController::class, 'upload']);
-
-
 
 Route::get('/', function () {
     return view('index');
 })->name('index');
 
-Route::get('/courses',  function () {
-    return view('course');
-})->name('course.index');
-
-Route::get('/videocourse', function () {
-    return view('videocourse');
-})->name('videocourse');
-
 Route::get('/log', function () {
     return view('login');
 })->name('sub_login');
 
+Route::get('/more_courses', [CourseController::class, 'sub_show'])->name('course.index');
 
+Route::get('/coursevideos/{id}', [VideoController::class, 'sub_index'])->name('videocourse');
+Route::get('/coursevideos/{id}/play', [VideoController::class, 'sub_play'])->name('videocourse.play');
 
 
 Route::group(['middleware' => 'auth'], function () {
@@ -76,6 +61,5 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('superadmin/admin/store', [SubscriberController::class, 'store'])->name('subscriber.admin.store');
     });
 });
-
 
 require __DIR__ . '/auth.php';

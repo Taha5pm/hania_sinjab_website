@@ -12,10 +12,10 @@ class receipt extends Model
 
     public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
     public function courses()
     {
-        return $this->belongsTo(course::class);
+        return $this->belongsTo(course::class, 'course_id');
     }
 }

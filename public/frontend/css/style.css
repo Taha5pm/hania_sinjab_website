@@ -906,6 +906,8 @@ a:focus {
     font-size: 18px;
     font-weight: 600;
     margin: 0 0 0 15px;
+    align-items: center;
+    align-content: center;
     white-space: nowrap;
     overflow: hidden;
 }
@@ -1412,6 +1414,7 @@ a:focus {
 .blog .blog-item {
     position: relative;
     margin-bottom: 30px;
+    background: rgba(247, 232, 183, .5);
 }
 
 .blog .blog-img {
@@ -1693,12 +1696,13 @@ path {
 
 
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 750px) {
   iframe{
-    height: 13em;
+    height: 30em;
+    width: 57em;
   }
   .card{
-    width: 40%;
+    width: 50%;
   }
 }
 

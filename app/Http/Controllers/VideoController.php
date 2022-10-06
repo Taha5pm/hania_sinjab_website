@@ -7,7 +7,6 @@ use App\Models\Course;
 use App\Models\Videotempo;
 use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\File;
 
 
@@ -23,6 +22,30 @@ class VideoController extends Controller
         $course = Course::all()->where('id', '=', $id);
 
         return view('superadmin.add_video', ['course' => $course]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *@param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function sub_index($id)
+    {
+        $course = Course::all()->where('id', '=', $id);
+        $videos = video::all()->where('course_id', '=', $id);
+        return view('videocourse', ['course' => $course, 'videos' => $videos]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *@param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function sub_play($id) // video id
+    {
+        $video = video::all()->where('id', '=', $id);
+        $course = Course::all()->where('id', '=', $video->value('course_id'));
+        return view('watch_video', ['course' => $course, 'video' => $video]);
     }
 
     /**
@@ -59,9 +82,14 @@ class VideoController extends Controller
             );
 
 
-            $video->path = public_path('videos/' . $course_name) . '/' . $tempvideo->filename;
+            $video->path = 'videos/' . $course_name . '/' . $tempvideo->filename;
+            if (!File::exists(public_path('videos/' . $course_name . '/thumbnails'))) {
+                mkdir(public_path('videos/' . $course_name . '/thumbnails'));
+            }
+
 
             $tempvideo->delete();
+            $video->title = $tempvideo->filename;
         }
         $video->save();
         return redirect()->route('superadmin.video', $id);
