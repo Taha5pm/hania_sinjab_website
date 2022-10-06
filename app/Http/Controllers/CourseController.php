@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\course;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -13,7 +15,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        return view('course');
+
+        return view('superadmin.add_course');
     }
 
     /**
@@ -34,50 +37,64 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $course = new course();
+        $course->name = $request->name;
+        $course->description = $request->description;
+        $course->field = $request->field;
+        $course->save();
+
+        return redirect()->route('superadmin.course');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\course  $course
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(course $course)
     {
-        //
+        $courses = Course::select('*')->orderBy('id', 'desc')->get();
+        return view('superadmin.show_courses', ['courses' => $courses]);
     }
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
+     * @param int $id
+     * @param  \App\Models\course  $course
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(course $course, $id)
     {
-        //
+        $course = course::all()->where('id', '=', $id);
+
+        return view('superadmin.edit_course', ['course' => $course]);
     }
 
     /**
      * Update the specified resource in storage.
-     *
+     * @param int $id
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\course  $course
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $course = course::where('id', '=', $id)->update([
+            'name' => $request->name, 'description' => $request->description, 'field' => $request->field
+        ]);
+        return redirect()->route('superadmin.course.show');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\course  $course
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(course $course)
     {
         //
     }
