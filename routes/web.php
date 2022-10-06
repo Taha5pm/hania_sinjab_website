@@ -20,6 +20,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('upload', [UploadController::class, 'upload']);
+Route::get('/', function () {
+    return view('index');
+});
 
 Route::group(['middleware' => 'auth'], function () {
     Route::group([
