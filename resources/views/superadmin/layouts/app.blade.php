@@ -13,6 +13,10 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <!-- FilePond to upload videos -->
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+
 </head>
 
 <body class="font-sans antialiased">
@@ -31,6 +35,8 @@
         <!-- Page Content -->
         <main>
             {{ $slot }}
+            <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+            @yield('scripts')
         </main>
     </div>
 </body>

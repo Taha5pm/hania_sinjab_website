@@ -57,7 +57,7 @@ return [
         ],
         'my_files' => [
             'driver' => 'local',
-            'root'   => public_path() . '/'
+            'root'   => storage_path('app/public') . '/'
         ],
 
     ],

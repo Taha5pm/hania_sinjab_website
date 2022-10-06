@@ -48,15 +48,6 @@
                             </div>
                             <div class="w-full md:w-1/2 px-3">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                    for="title">
-                                    Title
-                                </label>
-                                <input
-                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-5 leading-tight focus:outline-none focus:bg-white"
-                                    id="title" name='title' type="text" placeholder="first lesson">
-                            </div>
-                            <div class="w-full md:w-1/2 px-3">
-                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                     for="description">
                                     Description
                                 </label>
@@ -71,8 +62,9 @@
                                 </label>
                                 <input
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-5 leading-tight focus:outline-none focus:bg-white"
-                                    type='file' name='video'>
+                                    type='file' name='video' id='video'>
                             </div>
+
                             <div class="md:flex md:items-center">
                                 <div class="md:w-2/4"></div>
                                 <div class="md:w-2/3">
@@ -90,4 +82,22 @@
             </div>
         </div>
     </form>
+    @section('scripts')
+        <script>
+            // Get a reference to the file input element
+            const inputElement = document.querySelector('input[id="video"]');
+
+            // Create a FilePond instance
+            const pond = FilePond.create(inputElement);
+            FilePond.setOptions({
+                server: {
+                    url: '/upload',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    }
+
+                }
+            })
+        </script>
+    @endsection
 </x-app-layout>

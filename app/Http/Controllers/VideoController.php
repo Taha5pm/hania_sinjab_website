@@ -4,7 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\video;
 use App\Models\Course;
+use App\Models\Videotempo;
+use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\File;
+
 
 class VideoController extends Controller
 {
@@ -39,12 +44,24 @@ class VideoController extends Controller
     public function store(Request $request, $id)
     {
         $video = new video();
-        $video->title = $request->title;
         $video->description = $request->description;
         $video->course_id = $id;
-        if ($request->hasFile('video')) {
-            $path = $request->file('video')->store('videos', ['disk' => 'my_files']);
-            $video->path = $path;
+        $course_name = Course::all()->where('id', '=', $id)->value('name');
+        $tempvideo = Videotempo::where('foldername', $request->video)->first();
+
+        if ($tempvideo) {
+            if (!File::exists(public_path('videos/' . $course_name))) {
+                mkdir(public_path('videos/' . $course_name));
+            }
+            File::move(
+                storage_path('app/public/tempo/videos/' . $request->video . '/' . $tempvideo->filename),
+                public_path('videos/' . $course_name . '/' . $tempvideo->filename)
+            );
+
+
+            $video->path = public_path('videos/' . $course_name) . '/' . $tempvideo->filename;
+
+            $tempvideo->delete();
         }
         $video->save();
         return redirect()->route('superadmin.video', $id);

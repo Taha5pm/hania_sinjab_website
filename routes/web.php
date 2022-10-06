@@ -5,6 +5,7 @@ use App\Http\Controllers\ReceiptController;
 use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\superadmin\DashboardController;
+use App\Http\Controllers\UploadController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::post('upload', [UploadController::class, 'upload']);
 
 Route::group(['middleware' => 'auth'], function () {
     Route::group([
