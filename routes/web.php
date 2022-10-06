@@ -18,8 +18,8 @@ Route::get('/', function () {
     return view('index');
 })->name('index');
 
-Route::get('/log', function () {
-    return view('login');
+Route::get('/user/login', function () {
+    return view('sub_login');
 })->name('sub_login');
 
 Route::get('/more_courses', [CourseController::class, 'sub_show'])->name('course.index');
