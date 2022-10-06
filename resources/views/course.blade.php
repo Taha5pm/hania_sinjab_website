@@ -40,7 +40,7 @@
                     <a href="{{ route('index') }}" class="nav-item nav-link active">{{ __('Home') }}</a>
                     <a href="{{ route('index') }}" class="nav-item nav-link">{{ __('About') }}</a>
                     <a href="#contact" class="nav-item nav-link">{{ __('Contact') }}</a>
-                    <a href="{{ route('login') }}" class="nav-item nav-link">{{ __('Login') }}</a>
+                    <a href="{{ route('sub_login') }}" class="nav-item nav-link">{{ __('Login') }}</a>
                 </div>
             </div>
         </div>

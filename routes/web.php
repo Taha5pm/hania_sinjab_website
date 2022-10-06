@@ -21,19 +21,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('upload', [UploadController::class, 'upload']);
+
+
+
 Route::get('/', function () {
     return view('index');
 })->name('index');
 
-Route::get('/courses', [CourseController::class, 'index'])->name('course.index');
+Route::get('/courses',  function () {
+    return view('course');
+})->name('course.index');
+
 Route::get('/videocourse', function () {
     return view('videocourse');
 })->name('videocourse');
 
 Route::get('/log', function () {
     return view('login');
-})->name('login');
-});
+})->name('sub_login');
+
+
+
 
 Route::group(['middleware' => 'auth'], function () {
     Route::group([

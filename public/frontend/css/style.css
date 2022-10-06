@@ -899,7 +899,7 @@ a:focus {
     display: flex;
     align-items: center;
     background: #ffffff;
-    box-shadow: 0 0 15px rgba(0, 0, 0, .12);
+    box-shadow: 0 0 15px rgba(0, 0, 0, .40);
 }
 .portfolio .portfolio-text h5 {
     width: calc(100% - 70px);
@@ -1432,9 +1432,10 @@ a:focus {
 .blog .blog-text {
     position: relative;
     padding: 30px;
-    border-right: 1px solid rgba(0, 0, 0, .07);
-    border-bottom: 1px solid rgba(0, 0, 0, .07);
-    border-left: 1px solid rgba(0, 0, 0, .07);
+    border-right: 1px solid rgba(0, 0, 0, .30);
+    border-bottom: 1px solid rgba(0, 0, 0, .30);
+    border-left: 1px solid rgba(0, 0, 0, .30);
+    border-top:1px solid rgba(0, 0, 0, .30);
 }
 
 .blog .blog-text h2 {
