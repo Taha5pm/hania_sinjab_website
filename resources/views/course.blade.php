@@ -40,7 +40,7 @@
                     <a href="{{ route('index') }}" class="nav-item nav-link active">{{ __('Home') }}</a>
                     <a href="{{ route('index') }}" class="nav-item nav-link">{{ __('About') }}</a>
                     <a href="#contact" class="nav-item nav-link">{{ __('Contact') }}</a>
-                    <a href="{{ route('login') }}" class="nav-item nav-link">{{ __('Login') }}</a>
+                    <a href="{{ route('sub_login') }}" class="nav-item nav-link">{{ __('Login') }}</a>
                 </div>
             </div>
         </div>
@@ -80,73 +80,22 @@
                 </form>
             </div>
             <div class="row">
-                <div class="col-lg-4">
-                    <div class="blog-item wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="blog-text">
-                            <h2>Name Course</h2>
-                            <p>
-                                ---------------- any thinh about course ----------------------
-                            </p>
-                            <a href="{{ route('videocourse') }}" class="btn">Buy Course</a>
+
+                @foreach ($courses as $course)
+                    <div class="col-lg-4">
+                        <div class="blog-item wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="blog-text">
+                                <h2>{{ $course->name }}</h2>
+                                <p>
+                                    {{ $course->description }}
+                                </p>
+                                <a href="{{ route('videocourse', $course->id) }}" class="btn">View</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="blog-item wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="blog-text">
-                            <h2>Name Course</h2>
-                            <p>
-                                ---------------- any thinh about course ----------------------
-                            </p>
-                            <a href="#" class="btn">Buy Course</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="blog-item wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="blog-text">
-                            <h2>Name Course</h2>
-                            <p>
-                                ---------------- any thinh about course ----------------------
-                            </p>
-                            <a href="#" class="btn">Buy Course</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="blog-item wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="blog-text">
-                            <h2>Name Course</h2>
-                            <p>
-                                ---------------- any thinh about course ----------------------
-                            </p>
-                            <a href="#" class="btn">Buy Course</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="blog-item wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="blog-text">
-                            <h2>Name Course</h2>
-                            <p>
-                                ---------------- any thinh about course ----------------------
-                            </p>
-                            <a href="#" class="btn">Buy Course</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="blog-item wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="blog-text">
-                            <h2>Name Course</h2>
-                            <p>
-                                ---------------- any thinh about course ----------------------
-                            </p>
-                            <a href="#" class="btn">Buy Course</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
+
             <div class="containe">
                 <span>
                     <div class="index">1</div>

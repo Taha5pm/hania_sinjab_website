@@ -41,7 +41,7 @@
                     <a href="{{ route('index') }}" class="nav-item nav-link">{{ __('About') }}</a>
                     <a href="{{ route('course.index') }}" class="nav-item nav-link">{{ __('Courses') }}</a>
                     <a href="#contact" class="nav-item nav-link">{{ __('Contact') }}</a>
-                    <a href="{{ route('login') }}" class="nav-item nav-link">{{ __('Login') }}</a>
+                    <a href="{{ route('sub_login') }}" class="nav-item nav-link">{{ __('Login') }}</a>
                 </div>
             </div>
         </div>
@@ -68,95 +68,24 @@
     <div class="portfolio" id="portfolio">
         <div class="container">
             <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
-                <p>{{ __('Name Courses') }}</p>
+                <p>{{ $course->value('name') }}</p>
                 <h2>{{ __('') }}</h2>
             </div>
             <div class="row portfolio-container">
-                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
-                    <div class="portfolio-wrap">
-                        <div class="portfolio-img">
-                            <iframe src="https://www.youtube.com/embed/pWahNIMRxR0" frameborder="0"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                        </div>
-                        <div class="portfolio-text-t">
-                            <h5>eCommerce Website skdjfnklajsnf falksdjfakl dslkfka lkaddsfng</h5>
-                        </div>
+                @foreach ($videos as $video)
+                    <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
+                        <a href='{{ route('videocourse.play', $video->id) }}'>
+                            <div class="portfolio-wrap">
+                                <div class="portfolio-img">
+                                    <img src="{{ asset('') }}/logo.png">
+                                </div>
+                                <div class="portfolio-text-t portfolio-text">
+                                    <h5>{{ $video->description }}</h5>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
-                    <div class="portfolio-wrap">
-                        <div class="portfolio-img">
-                            <iframe src="https://www.youtube.com/embed/pWahNIMRxR0" frameborder="0"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                        </div>
-                        <div class="portfolio-text-t">
-                            <h5>eCommerce Website skdjfnklajsnf falksdjfakl dslkfka lkaddsfng</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
-                    <div class="portfolio-wrap">
-                        <div class="portfolio-img">
-                            <iframe src="https://www.youtube.com/embed/pWahNIMRxR0" frameborder="0"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                        </div>
-                        <div class="portfolio-text-t">
-                            <h5>eCommerce Website skdjfnklajsnf falksdjfakl dslkfka lkaddsfng</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
-                    <div class="portfolio-wrap">
-                        <div class="portfolio-img">
-                            <iframe src="https://www.youtube.com/embed/pWahNIMRxR0" frameborder="0"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                        </div>
-                        <div class="portfolio-text-t">
-                            <h5>eCommerce Website skdjfnklajsnf falksdjfakl dslkfka lkaddsfng</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
-                    <div class="portfolio-wrap">
-                        <div class="portfolio-img">
-                            <iframe src="https://www.youtube.com/embed/pWahNIMRxR0" frameborder="0"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                        </div>
-                        <div class="portfolio-text-t">
-                            <h5>eCommerce Website skdjfnklajsnf falksdjfakl dslkfka lkaddsfng</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
-                    <div class="portfolio-wrap">
-                        <div class="portfolio-img">
-                            <iframe src="https://www.youtube.com/embed/pWahNIMRxR0" frameborder="0"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                        </div>
-                        <div class="portfolio-text-t">
-                            <h5>eCommerce Website skdjfnklajsnf falksdjfakl dslkfka lkaddsfng</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
-                    <div class="portfolio-wrap">
-                        <div class="portfolio-img">
-                            <iframe src="https://www.youtube.com/embed/pWahNIMRxR0" frameborder="0"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                        </div>
-                        <div class="portfolio-text-t">
-                            <h5>eCommerce Website skdjfnklajsnf falksdjfakl dslkfka lkaddsfng</h5>
-                        </div>
-                    </div>
-                </div>
-
+                @endforeach
             </div>
             <div class="containe">
                 <span>

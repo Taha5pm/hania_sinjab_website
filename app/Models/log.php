@@ -12,6 +12,6 @@ class log extends Model
 
     public function users()
     {
-        return $this->belongsTo(user::class);
+        return $this->belongsTo(user::class, 'superadmin_id');
     }
 }

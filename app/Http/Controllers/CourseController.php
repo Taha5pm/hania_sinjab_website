@@ -18,6 +18,11 @@ class CourseController extends Controller
 
         return view('superadmin.add_course');
     }
+    public function sub_index()
+    {
+
+        return view('course');
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -57,6 +62,17 @@ class CourseController extends Controller
     {
         $courses = Course::select('*')->orderBy('id', 'desc')->get();
         return view('superadmin.show_courses', ['courses' => $courses]);
+    }
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\course  $course
+     * @return \Illuminate\Http\Response
+     */
+    public function sub_show(course $course)
+    {
+        $courses = Course::select('*')->orderBy('id', 'desc')->get();
+        return view('course', ['courses' => $courses]);
     }
 
     /**
