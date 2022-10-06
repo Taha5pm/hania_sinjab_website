@@ -37,10 +37,9 @@
 
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto">
-                    <a href="#home" class="nav-item nav-link active">{{ __('Home') }}</a>
-                    <a href="#about" class="nav-item nav-link">{{ __('About') }}</a>
-                    <a href="#experience" class="nav-item nav-link">{{ __('Experience') }}</a>
-                    <a href="#portfolio" class="nav-item nav-link">{{ __('Course') }}</a>
+                    <a href="{{ route('index') }}" class="nav-item nav-link active">{{ __('Home') }}</a>
+                    <a href="{{ route('index') }}" class="nav-item nav-link">{{ __('About') }}</a>
+                    <a href="{{ route('course.index') }}" class="nav-item nav-link">{{ __('Courses') }}</a>
                     <a href="#contact" class="nav-item nav-link">{{ __('Contact') }}</a>
                     <a href="{{ route('login') }}" class="nav-item nav-link">{{ __('Login') }}</a>
                 </div>
@@ -48,7 +47,6 @@
         </div>
     </div>
     <!-- Nav Bar End -->
-
 
     <!-- Hero Start -->
     <div class="hero" id="home">
@@ -58,13 +56,7 @@
                     <div class="hero-content">
                         <div class="hero-text">
                             <br>
-                            <p> </p>
-                            <p>{{ __('I am') }}</p>
-                            <h1>{{ __('Hania Sinjab') }}</h1>
-                            <h2></h2>
-                            <div class="typed-text">
-                                {{ __('Social Worker, Life Coaching, Psychological Comfort Content') }}
-                            </div>
+                            <br>
                         </div>
                     </div>
                 </div>
@@ -72,146 +64,123 @@
         </div>
     </div>
     <!-- Hero End -->
-
-
-    <!-- About Start -->
-    <div class="service" data-wow-delay="0.1s" id="about">
-        <div class="container">
-            <div class="section-header text-center">
-                <p>{{ __('Learn About Me') }}</p>
-                <h2>{{ __('10 Years Experience') }}</h2>
-            </div>
-            <div>
-                <p>
-                    {{ __('----------------------------------------any thing --------------------------------------------') }}
-                </p>
-            </div>
-        </div>
-    </div>
-    <!-- About End -->
-
-    <!-- Experience Start -->
-    <div class="experience" id="experience">
-        <div class="container">
-            <header class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
-                <p>{{ __('My Resume') }}</p>
-                <h2>{{ __('Working Experience') }}</h2>
-            </header>
-            <div class="timeline">
-                <div class="timeline-item left wow slideInLeft" data-wow-delay="0.1s">
-                    <div class="timeline-text">
-                        <div class="timeline-date">2015 - 2020</div>
-                        <h2>{{ __('Social Worker') }}</h2>
-                        <h4>{{ __('Damascus - Syria') }}</h4>
-                        <p>
-                            ----------------------any thing --------------------------
-                        </p>
-                    </div>
-                </div>
-                <div class="timeline-item right wow slideInRight" data-wow-delay="0.1s">
-                    <div class="timeline-text">
-                        <div class="timeline-date">2010 - 2015</div>
-                        <h2>{{ __('Psychological Comfort Content') }}</h2>
-                        <h4>{{ __('Damascus - Syria') }}</h4>
-                        <p>
-                            ----------------------any thing --------------------------
-                        </p>
-                    </div>
-                </div>
-                <div class="timeline-item left wow slideInLeft" data-wow-delay="0.1s">
-                    <div class="timeline-text">
-                        <div class="timeline-date">2005 - 2010</div>
-                        <h2>{{ __('Life Coaching') }}</h2>
-                        <h4>{{ __('Damascus - Syria') }}</h4>
-                        <p>
-                            ----------------------any thing --------------------------
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Job Experience End -->
-
-
-    <!-- Banner Start -->
-    <div class="banner wow zoomIn" data-wow-delay="0.1s">
-        <div class="container">
-            <div class="section-header text-center">
-                <p>{{ __('Reasonable Price') }}</p>
-                <h2>{{ __('Get A') }} <span>{{ __('Special') }}</span> {{ __('Price') }}</h2>
-            </div>
-            <div class="container banner-text">
-                <p>
-                    {{ __('Subscribe To Courses Now') }}
-                </p>
-                <a class="btn" href="{{ route('course.index') }}">{{ __('View Courses') }}</a>
-            </div>
-        </div>
-    </div>
-    <!-- Banner End -->
-
-
     <!-- Portfolio Start -->
     <div class="portfolio" id="portfolio">
         <div class="container">
             <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
-                <p>{{ __('Courses') }}</p>
-                <h2>{{ __('My Latest Courses') }}</h2>
+                <p>{{ __('Name Courses') }}</p>
+                <h2>{{ __('') }}</h2>
             </div>
-            {{-- <div class="row">
-                <div class="col-12">
-                    <ul id="portfolio-filter">
-                        <li data-filter="*" class="filter-active">All</li>
-                        <li data-filter=".filter-1">Web Design</li>
-                        <li data-filter=".filter-2">Mobile Apps</li>
-                        <li data-filter=".filter-3">Game Dev</li>
-                    </ul>
-                </div>
-            </div> --}}
             <div class="row portfolio-container">
                 <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
                     <div class="portfolio-wrap">
                         <div class="portfolio-img">
-                            <img src="{{ asset('frontend') }}/img/portfolio-1.jpg" alt="Image">
+                            <iframe src="https://www.youtube.com/embed/pWahNIMRxR0" frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
                         </div>
-                        <div class="portfolio-text">
-                            <h3>eCommerce Website</h3>
-                            <a class="btn" href="img/portfolio-1.jpg" data-lightbox="portfolio">+</a>
+                        <div class="portfolio-text-t">
+                            <h5>eCommerce Website skdjfnklajsnf falksdjfakl dslkfka lkaddsfng</h5>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-2 wow fadeInUp" data-wow-delay="0.2s">
+                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
                     <div class="portfolio-wrap">
                         <div class="portfolio-img">
-                            <img src="{{ asset('frontend') }}/img/portfolio-2.jpg" alt="Image">
+                            <iframe src="https://www.youtube.com/embed/pWahNIMRxR0" frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
                         </div>
-                        <div class="portfolio-text">
-                            <h3>Product Landing Page</h3>
-                            <a class="btn" href="img/portfolio-2.jpg" data-lightbox="portfolio">+</a>
+                        <div class="portfolio-text-t">
+                            <h5>eCommerce Website skdjfnklajsnf falksdjfakl dslkfka lkaddsfng</h5>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-3 wow fadeInUp" data-wow-delay="0.4s">
+                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
                     <div class="portfolio-wrap">
                         <div class="portfolio-img">
-                            <img src="{{ asset('frontend') }}/img/portfolio-3.jpg" alt="Image">
+                            <iframe src="https://www.youtube.com/embed/pWahNIMRxR0" frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
                         </div>
-                        <div class="portfolio-text">
-                            <h3>JavaScript quiz game</h3>
-                            <a class="btn" href="img/portfolio-3.jpg" data-lightbox="portfolio">+</a>
+                        <div class="portfolio-text-t">
+                            <h5>eCommerce Website skdjfnklajsnf falksdjfakl dslkfka lkaddsfng</h5>
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
+                    <div class="portfolio-wrap">
+                        <div class="portfolio-img">
+                            <iframe src="https://www.youtube.com/embed/pWahNIMRxR0" frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </div>
+                        <div class="portfolio-text-t">
+                            <h5>eCommerce Website skdjfnklajsnf falksdjfakl dslkfka lkaddsfng</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
+                    <div class="portfolio-wrap">
+                        <div class="portfolio-img">
+                            <iframe src="https://www.youtube.com/embed/pWahNIMRxR0" frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </div>
+                        <div class="portfolio-text-t">
+                            <h5>eCommerce Website skdjfnklajsnf falksdjfakl dslkfka lkaddsfng</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
+                    <div class="portfolio-wrap">
+                        <div class="portfolio-img">
+                            <iframe src="https://www.youtube.com/embed/pWahNIMRxR0" frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </div>
+                        <div class="portfolio-text-t">
+                            <h5>eCommerce Website skdjfnklajsnf falksdjfakl dslkfka lkaddsfng</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
+                    <div class="portfolio-wrap">
+                        <div class="portfolio-img">
+                            <iframe src="https://www.youtube.com/embed/pWahNIMRxR0" frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </div>
+                        <div class="portfolio-text-t">
+                            <h5>eCommerce Website skdjfnklajsnf falksdjfakl dslkfka lkaddsfng</h5>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div>
-                <ul id="portfolio-filter">
-                    <a class="btn" href="{{ route('course.index') }}">{{ __('More Courses') }}</a>
-                </ul>
+            <div class="containe">
+                <span>
+                    <div class="index">1</div>
+                    <div class="index">2</div>
+                    <div class="index">3</div>
+                    <div class="index">4</div>
+                    <div class="index">5</div>
+                </span>
+                <svg viewBox="0 0 100 100">
+                    <path
+                        d="m 7.1428558,49.999998 c -1e-7,-23.669348 19.1877962,-42.8571447 42.8571442,-42.8571446 23.669347,0 42.857144,19.1877966 42.857144,42.8571446" />
+                </svg>
+                <svg viewBox="0 0 100 100">
+                    <path
+                        d="m 7.1428558,49.999998 c -1e-7,23.669347 19.1877962,42.857144 42.8571442,42.857144 23.669347,0 42.857144,-19.187797 42.857144,-42.857144" />
+                </svg>
             </div>
         </div>
     </div>
     <!-- Portfolio End -->
+
+    <!-- Blog End -->
+
 
     <!-- Footer Start -->
     <div class="footer wow fadeIn" data-wow-delay="0.3s" id="contact">
@@ -238,6 +207,7 @@
                         href="https://crazybeeez.com">Crazy Beeez</a></p>
             </div>
         </div>
+    </div>
     </div>
     <!-- Footer End -->
 

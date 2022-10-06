@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CourseController;
+
 use App\Http\Controllers\ReceiptController;
 use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\VideoController;
@@ -22,6 +23,16 @@ use Illuminate\Support\Facades\Route;
 Route::post('upload', [UploadController::class, 'upload']);
 Route::get('/', function () {
     return view('index');
+})->name('index');
+
+Route::get('/courses', [CourseController::class, 'index'])->name('course.index');
+Route::get('/videocourse', function () {
+    return view('videocourse');
+})->name('videocourse');
+
+Route::get('/log', function () {
+    return view('login');
+})->name('login');
 });
 
 Route::group(['middleware' => 'auth'], function () {
