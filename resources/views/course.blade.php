@@ -40,7 +40,11 @@
                     <a href="{{ route('index') }}" class="nav-item nav-link active">{{ __('Home') }}</a>
                     <a href="{{ route('index') }}" class="nav-item nav-link">{{ __('About') }}</a>
                     <a href="#contact" class="nav-item nav-link">{{ __('Contact') }}</a>
-                    <a href="{{ route('sub_login') }}" class="nav-item nav-link">{{ __('Login') }}</a>
+                    @if (Auth::check())
+                        <a href="{{ route('sub_logout') }}" class="nav-item nav-link">{{ __('Logout') }}</a>
+                    @else
+                        <a href="{{ route('sub_login') }}" class="nav-item nav-link">{{ __('Login') }}</a>
+                    @endif
                 </div>
             </div>
         </div>

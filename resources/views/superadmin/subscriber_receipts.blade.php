@@ -60,31 +60,31 @@
                                     <tr class="border-b border-gray-200 ">
                                         <th scope="row"
                                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 ">
-                                            {{ $courses->where('id', '=', $receipt->value('course_id'))->value('name') }}
+                                            {{ $courses->where('id', '=', $receipt->course_id)->value('name') }}
                                         </th>
                                         <th scope="row"
                                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 ">
-                                            {{ $receipt->value('amount_paid') }} SYP
+                                            {{ $receipt->amount_paid }} SYP
                                         </th>
-                                        @if ($receipt->value('amount_left') > 0)
+                                        @if ($receipt->amount_left > 0)
                                             <th scope="row"
                                                 class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-yellow-400 ">
-                                                {{ $receipt->value('amount_left') }} SYP
+                                                {{ $receipt->amount_left }} SYP
                                             </th>
                                         @else
                                             <th scope="row"
                                                 class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-green-400 ">
-                                                {{ $receipt->value('amount_left') }} SYP
+                                                {{ $receipt->amount_left }} SYP
                                             </th>
                                         @endif
 
                                         <th scope="row"
                                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 ">
-                                            {{ $receipt->value('created_at') }}
+                                            {{ $receipt->created_at }}
                                         </th>
                                         <th scope="row"
                                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 ">
-                                            {{ $receipt->value('expire_date') }}
+                                            {{ $receipt->expire_date }}
 
                                             {{-- $date1 = Carbon::createFromFormat('Y-m-d', Carbon::now()->toDateString('Y-m-d'));
                                             $date2 = Carbon::createFromFormat('Y-m-d', '2022-11-08');

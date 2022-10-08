@@ -3,6 +3,7 @@
 use App\Http\Controllers\CourseController;
 
 use App\Http\Controllers\ReceiptController;
+use App\Http\Controllers\SubloginController;
 use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\superadmin\DashboardController;
@@ -21,16 +22,21 @@ Route::get('/', function () {
     return view('index', ['courses' => $courses]);
 })->name('index');
 
-Route::get('/user/login', function () {
-    return view('sub_login');
-})->name('sub_login');
+Route::get('/user/login', [SubloginController::class, 'index'])->name('sub_login');
+Route::post('/user/login/check', [SubloginController::class, 'check'])->name('sub_login.check');
 
 Route::get('/more_courses', [CourseController::class, 'sub_show'])->name('course.index');
 Route::get('/more_courses/search', [CourseController::class, 'sub_search'])->name('course.index.search');
 
-Route::get('/coursevideos/{id}', [VideoController::class, 'sub_index'])->name('videocourse');
-Route::get('/coursevideos/{id}/play', [VideoController::class, 'sub_play'])->name('videocourse.play');
-
+Route::group(['middleware' => 'is_loged'], function () {
+    Route::get('/user/logout', [SubloginController::class, 'logout'])->name('sub_logout');
+    Route::group([
+        'middleware' => 'is_subscribed'
+    ], function () {
+        Route::get('/coursevideos/{id}', [VideoController::class, 'sub_index'])->name('videocourse');
+        Route::get('/coursevideos/{id}/play', [VideoController::class, 'sub_play'])->name('videocourse.play');
+    });
+});
 
 Route::group(['middleware' => 'auth'], function () {
     Route::group([
