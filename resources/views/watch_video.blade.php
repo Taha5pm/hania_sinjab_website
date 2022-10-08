@@ -49,6 +49,14 @@
     <!-- Nav Bar End -->
 
     <!-- Hero Start -->
+    @mobile()
+    <div class="portfolio" id="home">
+        <div class="container-fluid">
+
+        </div>
+    </div>
+    @endmobile()
+    @desktop()
     <div class="hero" id="home">
         <div class="container-fluid">
             <div class="row align-items-center">
@@ -63,6 +71,7 @@
             </div>
         </div>
     </div>
+    @enddesktop()
     <!-- Hero End -->
     <!-- Portfolio Start -->
     <div class="portfolio" id="portfolio">
@@ -71,27 +80,24 @@
                 <p>{{ $course->value('name') }}</p>
                 <h6>{{ $video->value('title') }}</h6>
             </div>
-
-            <div class="row portfolio-container">
+            <div class="portfolio-filter">
                 <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
-
+                    @mobile()
+                    <video src="{{ asset($video->value('path')) }}" frameborder="20" width="350"
+                        allow="accelerometer autoplay; encrypted-media; gyroscope;picture-in-picture" controls
+                        controlsList="nodownload " allowfullscreen></video>
+                    @endmobile()
+                    @desktop()
                     <video src="{{ asset($video->value('path')) }}" frameborder="20"
                         allow="accelerometer autoplay; encrypted-media; gyroscope;picture-in-picture" controls
                         controlsList="nodownload " allowfullscreen></video>
+                    @enddesktop()
                 </div>
-
             </div>
-
-
-
         </div>
-        <br>
-        <br>
-        <br>
     </div>
-    <!-- Portfolio End -->
 
-    <!-- Blog End -->
+    <!-- Portfolio End -->
 
 
     <!-- Footer Start -->

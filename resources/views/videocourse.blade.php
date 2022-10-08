@@ -49,6 +49,14 @@
     <!-- Nav Bar End -->
 
     <!-- Hero Start -->
+    @mobile()
+    <div class="portfolio" id="home">
+        <div class="container-fluid">
+
+        </div>
+    </div>
+    @endmobile()
+    @desktop()
     <div class="hero" id="home">
         <div class="container-fluid">
             <div class="row align-items-center">
@@ -63,6 +71,7 @@
             </div>
         </div>
     </div>
+    @enddesktop()
     <!-- Hero End -->
     <!-- Portfolio Start -->
     <div class="portfolio" id="portfolio">
@@ -71,6 +80,25 @@
                 <p>{{ $course->value('name') }}</p>
                 <h2>{{ __('') }}</h2>
             </div>
+            @mobile()
+            <div class="portfolio-container">
+                <div class="portfolio-wrap-m ">
+                    @foreach ($videos as $video)
+                        <div class="col-lg-4 portfolio-item wow fadeInUp" data-wow-delay="0.0s">
+                            <a href='{{ route('videocourse.play', $video->id) }}'>
+                                <div class="portfolio-img">
+                                    <img src="{{ asset('') }}/logo.png">
+                                </div>
+                                <div class="portfolio-text-t portfolio-text">
+                                    <h5>{{ $video->description }}</h5>
+                                </div>
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            @endmobile()
+            @desktop()
             <div class="row portfolio-container">
                 @foreach ($videos as $video)
                     <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
@@ -87,6 +115,7 @@
                     </div>
                 @endforeach
             </div>
+            @enddesktop()
             <div class="containe">
                 <span>
                     <div class="index">1</div>

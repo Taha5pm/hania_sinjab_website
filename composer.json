@@ -12,6 +12,7 @@
         "laravel/tinker": "^2.7",
         "pawlox/video-thumbnail": "^4.0",
         "php-ffmpeg/php-ffmpeg": "^1.0",
+        "riverskies/laravel-mobile-detect": "^1.3",
         "spatie/laravel-medialibrary": "10.2.0"
     },
     "require-dev": {
