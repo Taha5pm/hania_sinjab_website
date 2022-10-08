@@ -169,40 +169,21 @@
                     </ul>
                 </div>
             </div> --}}
-            <div class="row portfolio-container">
-                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
-                    <div class="portfolio-wrap">
-                        <div class="portfolio-img">
-                            <img src="{{ asset('frontend') }}/img/portfolio-1.jpg" alt="Image">
-                        </div>
-                        <div class="portfolio-text">
-                            <h3>eCommerce Website</h3>
-                            <a class="btn" href="img/portfolio-1.jpg" data-lightbox="portfolio">+</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-2 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="portfolio-wrap">
-                        <div class="portfolio-img">
-                            <img src="{{ asset('frontend') }}/img/portfolio-2.jpg" alt="Image">
-                        </div>
-                        <div class="portfolio-text">
-                            <h3>Product Landing Page</h3>
-                            <a class="btn" href="img/portfolio-2.jpg" data-lightbox="portfolio">+</a>
+            <div class="row">
+                @foreach ($courses as $course)
+                    <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
+                        <div class="blog-item wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="blog-text">
+                                <h2>{{ $course->name }}</h2>
+                                <p>
+                                    {{ $course->description }}
+                                </p>
+                                <a href="{{ route('videocourse', $course->id) }}" class="btn">View</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-3 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="portfolio-wrap">
-                        <div class="portfolio-img">
-                            <img src="{{ asset('frontend') }}/img/portfolio-3.jpg" alt="Image">
-                        </div>
-                        <div class="portfolio-text">
-                            <h3>JavaScript quiz game</h3>
-                            <a class="btn" href="img/portfolio-3.jpg" data-lightbox="portfolio">+</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+
             </div>
             <div>
                 <ul id="portfolio-filter">

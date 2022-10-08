@@ -1414,13 +1414,14 @@ a:focus {
 .blog .blog-item {
     position: relative;
     margin-bottom: 30px;
-    background: rgba(247, 232, 183, .5);
+    background: url(../img/image1.jpg);
 }
 
 .blog .blog-img {
     position: relative;
     width: 100%;
     overflow: hidden;
+
 }
 
 .blog .blog-img img {

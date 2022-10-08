@@ -7,6 +7,8 @@ use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\superadmin\DashboardController;
 use App\Http\Controllers\UploadController;
+
+use App\Models\course;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +17,8 @@ use Illuminate\Support\Facades\Auth;
 Route::post('upload', [UploadController::class, 'upload']);
 
 Route::get('/', function () {
-    return view('index');
+    $courses = Course::orderBy('id', 'desc')->take(3)->get();
+    return view('index', ['courses' => $courses]);
 })->name('index');
 
 Route::get('/user/login', function () {
