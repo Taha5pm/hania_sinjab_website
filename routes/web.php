@@ -26,6 +26,7 @@ Route::get('/user/login', function () {
 })->name('sub_login');
 
 Route::get('/more_courses', [CourseController::class, 'sub_show'])->name('course.index');
+Route::get('/more_courses/search', [CourseController::class, 'sub_search'])->name('course.index.search');
 
 Route::get('/coursevideos/{id}', [VideoController::class, 'sub_index'])->name('videocourse');
 Route::get('/coursevideos/{id}/play', [VideoController::class, 'sub_play'])->name('videocourse.play');

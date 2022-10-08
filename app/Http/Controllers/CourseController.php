@@ -72,7 +72,12 @@ class CourseController extends Controller
      */
     public function sub_show(course $course)
     {
-        $courses = Course::select('*')->orderBy('id', 'desc')->get();
+        $courses = Course::select('*')->orderBy('id', 'desc')->paginate(6);
+        return view('course', ['courses' => $courses]);
+    }
+    public function sub_search(Request $request)
+    {
+        $courses = Course::where('name', 'like', '%' . $request->search . '%')->paginate(6);
         return view('course', ['courses' => $courses]);
     }
 

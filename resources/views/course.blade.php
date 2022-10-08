@@ -67,12 +67,12 @@
     <!-- Blog Start -->
     <div class="blog" id="blog">
         <div class="container">
-            <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
+            <div class="section-header text-center wow zoomIn " data-wow-delay="0.1s">
                 <h2>{{ __('Courses') }}</h2>
-                <br>
-                <form action="">
+
+                <form action="{{ route('course.index.search') }}" class="form-horizontal" method="get">
                     <div class="input-group no-border" id="portfolio-filter">
-                        <input type="text" name="q" placeholder="Search..." value="">
+                        <input type="text" name="search" placeholder="Search...">
                         <button type="submit" class="btn align-item-right">
                             <i class="fas fa-search"></i>
                         </button>
@@ -96,22 +96,8 @@
                 @endforeach
             </div>
 
-            <div class="containe">
-                <span>
-                    <div class="index">1</div>
-                    <div class="index">2</div>
-                    <div class="index">3</div>
-                    <div class="index">4</div>
-                    <div class="index">5</div>
-                </span>
-                <svg viewBox="0 0 100 100">
-                    <path
-                        d="m 7.1428558,49.999998 c -1e-7,-23.669348 19.1877962,-42.8571447 42.8571442,-42.8571446 23.669347,0 42.857144,19.1877966 42.857144,42.8571446" />
-                </svg>
-                <svg viewBox="0 0 100 100">
-                    <path
-                        d="m 7.1428558,49.999998 c -1e-7,23.669347 19.1877962,42.857144 42.8571442,42.857144 23.669347,0 42.857144,-19.187797 42.857144,-42.857144" />
-                </svg>
+            <div class="pagination justify-content-center">
+                {!! $courses->links('pagination::bootstrap-4') !!}
             </div>
         </div>
     </div>
