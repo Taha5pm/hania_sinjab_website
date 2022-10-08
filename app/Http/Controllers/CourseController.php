@@ -47,6 +47,7 @@ class CourseController extends Controller
         $course->name = $request->name;
         $course->description = $request->description;
         $course->field = $request->field;
+        $course->price = $request->price;
         $course->save();
 
         return redirect()->route('superadmin.course');
@@ -99,7 +100,8 @@ class CourseController extends Controller
     {
 
         $course = course::where('id', '=', $id)->update([
-            'name' => $request->name, 'description' => $request->description, 'field' => $request->field
+            'name' => $request->name, 'description' => $request->description,
+            'field' => $request->field, 'price' => $request->price
         ]);
         return redirect()->route('superadmin.course.show');
     }

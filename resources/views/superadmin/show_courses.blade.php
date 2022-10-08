@@ -36,6 +36,9 @@
                                     <th scope="col" class="py-3 px-6  bg-gray-50 ">
                                         Field
                                     </th>
+                                    <th scope="col" class="py-3 px-6  bg-gray-50 ">
+                                        Subscription Price
+                                    </th>
                                     <th>
                                     </th>
                                 </tr>
@@ -54,6 +57,10 @@
                                         <th scope="row"
                                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 ">
                                             {{ $course->field }}
+                                        </th>
+                                        <th scope="row"
+                                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 ">
+                                            {{ $course->price }} SYP
                                         </th>
                                         <th scope="row"
                                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50  ">

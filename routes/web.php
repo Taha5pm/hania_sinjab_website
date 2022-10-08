@@ -48,14 +48,18 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('superadmin/courses/{id}/add_video/store', [VideoController::class, 'store'])->name('video.store');
         Route::put('superadmin/courses/{id}/video/update', [VideoController::class, 'update'])->name('video.update');
 
-        Route::get('superadmin/subscriber', [SubscriberController::class, 'index'])->name('subscriber');
-        Route::get('superadmin/subscriber/show', [SubscriberController::class, 'show'])->name('subscriber.show');
+        Route::get('superadmin/subscribers', [SubscriberController::class, 'index'])->name('subscriber');
+        Route::get('superadmin/subscribers/show', [SubscriberController::class, 'show'])->name('subscriber.show');
         Route::get('superadmin/subscriber/{id}/edit', [SubscriberController::class, 'edit'])->name('subscriber.edit');
         Route::put('superadmin/subscriber/{id}/update', [SubscriberController::class, 'update'])->name('subscriber.update');
         Route::put('superadmin/subscriber/store', [SubscriberController::class, 'store'])->name('subscriber.store');
 
-        Route::get('superadmin/admin', [SubscriberController::class, 'index_admin'])->name('subscriber.admin');
-        Route::get('superadmin/admin/show', [SubscriberController::class, 'show_admin'])->name('subscriber.admin.show');
+        Route::get('superadmin/subscriber/{id}/receipts', [ReceiptController::class, 'index'])->name('subscriber.receipt');
+        Route::get('superadmin/subscriber/{id}/make_receipt', [ReceiptController::class, 'create'])->name('subscriber.receipt.make_receipt');
+        Route::put('superadmin/subscriber/{id}/receipt/store', [ReceiptController::class, 'store'])->name('subscriber.receipt.store');
+
+        Route::get('superadmin/admins', [SubscriberController::class, 'index_admin'])->name('subscriber.admin');
+        Route::get('superadmin/admins/show', [SubscriberController::class, 'show_admin'])->name('subscriber.admin.show');
         Route::get('superadmin/admin/{id}/edit', [SubscriberController::class, 'edit'])->name('subscriber.admin.edit');
         Route::put('superadmin/admin/{id}/update', [SubscriberController::class, 'update'])->name('subscriber.admin.update');
         Route::put('superadmin/admin/store', [SubscriberController::class, 'store'])->name('subscriber.admin.store');

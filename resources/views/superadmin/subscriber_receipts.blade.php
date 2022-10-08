@@ -3,16 +3,25 @@
         <div class="flow-root ">
             <p class="float-left text-green-600">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Show Subscribers') }}
+                {{ $user->value('fname') }} Receipts
             </h2>
             </p>
 
-            <p class="float-right text-green-800">
-                <a href="{{ route('superadmin.subscriber') }}">
+            <p class="float-right text-green-800 lg:px-2">
+                <a href="{{ route('superadmin.subscriber.show') }}">
                     <button
-                        class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-6 rounded"
+                        class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-8 rounded"
                         type="button">
                         Back </button>
+                </a>
+            </p>
+
+            <p class="float-right text-green-800 ">
+                <a href="{{ route('superadmin.subscriber.receipt.make_receipt', $user->value('id')) }}">
+                    <button
+                        class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-8 rounded"
+                        type="button">
+                        Make Receipt </button>
                 </a>
             </p>
         </div>
@@ -28,47 +37,61 @@
                             <thead class="text-xs text-gray-700 uppercase ">
                                 <tr>
                                     <th scope="col" class="py-3 px-6 bg-gray-50 ">
-                                        First Name
+                                        Course Name
                                     </th>
                                     <th scope="col" class="py-3 px-6  bg-gray-50 ">
-                                        Last Name
+                                        Amount Paid
                                     </th>
                                     <th scope="col" class="py-3 px-6  bg-gray-50 ">
-                                        Email
+                                        Amount Left
                                     </th>
                                     <th scope="col" class="py-3 px-6  bg-gray-50 ">
                                         Created At
                                     </th>
                                     <th scope="col" class="py-3 px-6  bg-gray-50 ">
-                                        Status
+                                        Expire At
                                     </th>
                                     <th>
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($subs as $sub)
+                                @foreach ($receipts as $receipt)
                                     <tr class="border-b border-gray-200 ">
                                         <th scope="row"
                                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 ">
-                                            {{ $sub->fname }}
+                                            {{ $courses->where('id', '=', $receipt->value('course_id'))->value('name') }}
                                         </th>
                                         <th scope="row"
                                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 ">
-                                            {{ $sub->lname }}
+                                            {{ $receipt->value('amount_paid') }} SYP
                                         </th>
-                                        <th scope="row"
-                                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 ">
-                                            {{ $sub->email }}
-                                        </th>
-                                        <th scope="row"
-                                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 ">
-                                            {{ $sub->created_at }}
-                                        </th>
-                                        <th>
+                                        @if ($receipt->value('amount_left') > 0)
+                                            <th scope="row"
+                                                class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-yellow-400 ">
+                                                {{ $receipt->value('amount_left') }} SYP
+                                            </th>
+                                        @else
+                                            <th scope="row"
+                                                class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-green-400 ">
+                                                {{ $receipt->value('amount_left') }} SYP
+                                            </th>
+                                        @endif
 
+                                        <th scope="row"
+                                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 ">
+                                            {{ $receipt->value('created_at') }}
                                         </th>
                                         <th scope="row"
+                                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 ">
+                                            {{ $receipt->value('expire_date') }}
+
+                                            {{-- $date1 = Carbon::createFromFormat('Y-m-d', Carbon::now()->toDateString('Y-m-d'));
+                                            $date2 = Carbon::createFromFormat('Y-m-d', '2022-11-08');
+                                            dd($date1->gte($date2)); --}}
+                                        </th>
+
+                                        {{-- <th scope="row"
                                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50  ">
                                             <a href="{{ route('superadmin.subscriber.edit', $sub->id) }}">
                                                 <button
@@ -79,13 +102,13 @@
                                         </th>
                                         <th scope="row"
                                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50  ">
-                                            <a href="{{ route('superadmin.subscriber.receipt', $sub->id) }}">
+                                            <a href="{{ route('superadmin.subscriber.edit', $sub->id) }}">
                                                 <button
                                                     class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold  py-2 px-6 rounded">
                                                     Receipts
                                                 </button>
                                             </a>
-                                        </th>
+                                        </th> --}}
                                     </tr>
                                 @endforeach
                             </tbody>

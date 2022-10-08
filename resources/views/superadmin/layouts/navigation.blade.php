@@ -18,17 +18,17 @@
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('superadmin.course')" :active="request()->routeIs('superadmin.course')">
-                        {{ __('Add Course') }}
+                        {{ __('Courses') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('superadmin.subscriber')" :active="request()->routeIs('superadmin.subscriber')">
-                        {{ __('Add Subscriber') }}
+                        {{ __('Subscribers') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('superadmin.subscriber.admin')" :active="request()->routeIs('superadmin.subscriber.admin')">
-                        {{ __('Add Admin') }}
+                        {{ __('Admins') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -50,6 +50,9 @@
                                 </svg>
                             </div>
                         </button>
+                        <div>
+                            <small class="text-blue-600">{{ Auth::user()->role }}</small>
+                        </div>
                     </x-slot>
 
                     <x-slot name="content">
