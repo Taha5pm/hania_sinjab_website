@@ -32,7 +32,7 @@ class VideoController extends Controller
     public function sub_index($id)
     {
         $course = Course::all()->where('id', '=', $id);
-        $videos = video::all()->where('course_id', '=', $id);
+        $videos = video::select('*')->where('course_id', '=', $id)->orderBy('id', 'desc')->paginate(6);
         return view('videocourse', ['course' => $course, 'videos' => $videos]);
     }
 
