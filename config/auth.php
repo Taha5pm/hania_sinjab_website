@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'superadmin',
+        'guard' => 'user',
         'passwords' => 'users',
     ],
 
@@ -36,7 +36,7 @@ return [
     */
 
     'guards' => [
-        'superadmin' => [
+        'user' => [
             'driver' => 'session',
             'provider' => 'users',
         ],

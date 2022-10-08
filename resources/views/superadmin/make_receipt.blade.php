@@ -42,14 +42,14 @@
                                     for="fname">
                                     Course Name
                                 </label>
-                                @foreach ($courses as $course)
-                                    <select name='course_id'
+                                <select name='course_id'
+                                    @foreach ($courses as $course)
                                         class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-4">
                                         <option value='{{ $course->id }}'>
                                             {{ $course->name }} - {{ $course->price }} SYP
-                                        </option>
+                                        </option> @endforeach
                                     </select>
-                                @endforeach
+
 
                             </div>
                             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
