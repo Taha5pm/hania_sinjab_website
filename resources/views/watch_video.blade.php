@@ -75,13 +75,19 @@
             <div class="row portfolio-container">
                 <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
 
-                    <iframe height="500" width="500" src="{{ asset($video->value('path')) }}" frameborder="20"
-                        allow="accelerometer autoplay; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
+                    <video src="{{ asset($video->value('path')) }}" frameborder="20"
+                        allow="accelerometer autoplay; encrypted-media; gyroscope;picture-in-picture" controls
+                        controlsList="nodownload " allowfullscreen></video>
                 </div>
+
             </div>
 
+
+
         </div>
+        <br>
+        <br>
+        <br>
     </div>
     <!-- Portfolio End -->
 

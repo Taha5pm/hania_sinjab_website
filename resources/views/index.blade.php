@@ -169,21 +169,24 @@
                     </ul>
                 </div>
             </div> --}}
-            <div class="row">
-                @foreach ($courses as $course)
-                    <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
-                        <div class="blog-item wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="blog-text">
-                                <h2>{{ $course->name }}</h2>
-                                <p>
-                                    {{ $course->description }}
-                                </p>
-                                <a href="{{ route('videocourse', $course->id) }}" class="btn">View</a>
+            <div class="blog" id="blog">
+                <div class="container">
+                    <div class="row">
+                        @foreach ($courses as $course)
+                            <div class="col-lg-4">
+                                <div class="blog-item wow fadeInUp" data-wow-delay="0.1s">
+                                    <div class="blog-text">
+                                        <h2>{{ $course->name }}</h2>
+                                        <p>
+                                            {{ $course->description }}
+                                        </p>
+                                        <a href="{{ route('videocourse', $course->id) }}" class="btn">View</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
-                @endforeach
-
+                </div>
             </div>
             <div>
                 <ul id="portfolio-filter">
