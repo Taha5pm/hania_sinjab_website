@@ -95,6 +95,22 @@
     <!-- Blog Start -->
     <div class="blog" id="blog">
         <div class="container">
+            @mobile()
+            <div class="section-header text-center wow zoomIn " data-wow-delay="0.1s">
+                <h2>{{ __('messages.course') }}</h2>
+                <br>
+                <br>
+                <form action="{{ route('course.index.search') }}" class="form-horizontal" method="get">
+                    <div class="input-group no-border" id="portfolio-filter">
+                        <input type="text" name="search" placeholder={{ __('messages.search') }}>
+                        <button type="submit" class="btn align-item-right">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            @endmobile()
+            @desktop()
             <div class="section-header text-center wow zoomIn " data-wow-delay="0.1s">
                 <h2>{{ __('messages.course') }}</h2>
 
@@ -107,6 +123,7 @@
                     </div>
                 </form>
             </div>
+            @enddesktop()
             <div class="row">
                 @mobile()
 
@@ -125,7 +142,7 @@
                                         {{ $course->description_ar }}
                                     </p>
                                 @endif
-                                <a href="{{ route('videocourse', $course->id) }}" class="btn">View</a>
+                                <a href="{{ route('videocourse', $course->id) }}" class="btn">{{ __('messages.view') }}</a>
                             </div>
                         </div>
                     </div>

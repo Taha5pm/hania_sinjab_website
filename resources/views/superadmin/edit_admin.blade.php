@@ -37,22 +37,24 @@
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-5 leading-tight focus:outline-none focus:bg-white"
                                     id="fname" name="fname" type="text" value="{{ $admin->value('fname') }}">
                             </div>
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                for="lname">
-                                Last Name
-                            </label>
-                            <input
-                                class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-5 leading-tight focus:outline-none focus:bg-white"
-                                id="lname" name='lname' type="text" value="{{ $admin->value('lname') }}">
-                        </div>
-                        <div class="w-full md:w-1/2 px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                for="email">
-                                Email
-                            </label>
-                            <textarea
-                                class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-5 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                id="email" name="email" rows="3" cols="3">{{ $admin->value('email') }}</textarea>
+                            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                    for="lname">
+                                    Last Name
+                                </label>
+                                <input
+                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-5 leading-tight focus:outline-none focus:bg-white"
+                                    id="lname" name='lname' type="text" value="{{ $admin->value('lname') }}">
+                            </div>
+                            <div class="w-full md:w-1/2 px-3">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                    for="email">
+                                    Email
+                                </label>
+                                <textarea
+                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-5 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                    id="email" name="email" rows="3" cols="3">{{ $admin->value('email') }}</textarea>
+                            </div>
                         </div>
                         <div class="md:flex md:items-center">
                             <div class="md:w-2/4"></div>
