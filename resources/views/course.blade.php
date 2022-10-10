@@ -37,14 +37,29 @@
 
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto">
-                    <a href="{{ route('index') }}" class="nav-item nav-link active">{{ __('Home') }}</a>
-                    <a href="{{ route('index') }}" class="nav-item nav-link">{{ __('About') }}</a>
-                    <a href="#contact" class="nav-item nav-link">{{ __('Contact') }}</a>
+                    <a href="{{ route('index') }}" class="nav-item nav-link active">{{ __('messages.home') }}</a>
+                    <a href="{{ route('index') }}" class="nav-item nav-link">{{ __('messages.about') }}</a>
+                    <a href="#contact" class="nav-item nav-link">{{ __('messages.contact') }}</a>
                     @if (Auth::check())
-                        <a href="{{ route('sub_logout') }}" class="nav-item nav-link">{{ __('Logout') }}</a>
+                        <a href="{{ route('sub_logout') }}" class="nav-item nav-link">{{ __('messages.logout') }}</a>
                     @else
-                        <a href="{{ route('sub_login') }}" class="nav-item nav-link">{{ __('Login') }}</a>
+                        <a href="{{ route('sub_login') }}" class="nav-item nav-link">{{ __('messages.login') }}</a>
                     @endif
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ __('messages.' . Config::get('languages')[App::getLocale()]) }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            @foreach (Config::get('languages') as $lang => $language)
+                                @if ($lang != App::getLocale())
+                                    <a class="dropdown-item" href="{{ route('lang.switch', $lang) }}">
+                                        {{ __('messages.' . $language) }}
+                                    </a>
+                                @endif
+                            @endforeach
+                        </div>
+                    </li>
                 </div>
             </div>
         </div>
@@ -81,11 +96,11 @@
     <div class="blog" id="blog">
         <div class="container">
             <div class="section-header text-center wow zoomIn " data-wow-delay="0.1s">
-                <h2>{{ __('Courses') }}</h2>
+                <h2>{{ __('messages.course') }}</h2>
 
                 <form action="{{ route('course.index.search') }}" class="form-horizontal" method="get">
                     <div class="input-group no-border" id="portfolio-filter">
-                        <input type="text" name="search" placeholder="Search...">
+                        <input type="text" name="search" placeholder={{ __('messages.search') }}>
                         <button type="submit" class="btn align-item-right">
                             <i class="fas fa-search"></i>
                         </button>
@@ -120,7 +135,8 @@
                                 <p>
                                     {{ $course->description }}
                                 </p>
-                                <a href="{{ route('videocourse', $course->id) }}" class="btn">View</a>
+                                <a href="{{ route('videocourse', $course->id) }}"
+                                    class="btn">{{ __('messages.view') }}</a>
                             </div>
                         </div>
                     </div>
@@ -141,8 +157,8 @@
         <div class="container-fluid">
             <div class="container">
                 <div class="footer-info">
-                    <h2>{{ __('Hania Sinjab') }}</h2>
-                    <h3>{{ __('Damascus - Syria') }}</h3>
+                    <h2>{{ __('messages.hania sinjab') }}</h2>
+                    <h3>{{ __('messages.syria') }}</h3>
                     <div class="footer-menu">
                         <h3>+012 345 67890</h3>
                         <h3>info@example.com</h3>
@@ -157,7 +173,7 @@
                 </div>
             </div>
             <div class="container copyright">
-                <p>&copy; <a href="#">{{ __('Hania Sinjab') }}</a>, All Right Reserved | Designed By <a
+                <p>&copy; <a href="#">{{ __('messages.hania sinjab') }}</a>, All Right Reserved | Designed By <a
                         href="https://crazybeeez.com">Crazy Beeez</a></p>
             </div>
         </div>
