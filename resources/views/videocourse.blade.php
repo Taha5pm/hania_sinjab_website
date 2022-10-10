@@ -37,15 +37,30 @@
 
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto">
-                    <a href="{{ route('index') }}" class="nav-item nav-link active">{{ __('Home') }}</a>
-                    <a href="{{ route('index') }}" class="nav-item nav-link">{{ __('About') }}</a>
-                    <a href="{{ route('course.index') }}" class="nav-item nav-link">{{ __('Courses') }}</a>
-                    <a href="#contact" class="nav-item nav-link">{{ __('Contact') }}</a>
+                    <a href="{{ route('index') }}" class="nav-item nav-link active">{{ __('messages.home') }}</a>
+                    <a href="{{ route('index') }}" class="nav-item nav-link">{{ __('messages.about') }}</a>
+                    <a href="{{ route('course.index') }}" class="nav-item nav-link">{{ __('messages.course') }}</a>
+                    <a href="#contact" class="nav-item nav-link">{{ __('messages.contact') }}</a>
                     @if (Auth::check())
-                        <a href="{{ route('sub_logout') }}" class="nav-item nav-link">{{ __('Logout') }}</a>
+                        <a href="{{ route('sub_logout') }}" class="nav-item nav-link">{{ __('messages.logout') }}</a>
                     @else
-                        <a href="{{ route('sub_login') }}" class="nav-item nav-link">{{ __('Login') }}</a>
+                        <a href="{{ route('sub_login') }}" class="nav-item nav-link">{{ __('messages.login') }}</a>
                     @endif
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ __('messages.' . Config::get('languages')[App::getLocale()]) }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            @foreach (Config::get('languages') as $lang => $language)
+                                @if ($lang != App::getLocale())
+                                    <a class="dropdown-item" href="{{ route('lang.switch', $lang) }}">
+                                        {{ __('messages.' . $language) }}
+                                    </a>
+                                @endif
+                            @endforeach
+                        </div>
+                    </li>
                 </div>
             </div>
         </div>
@@ -119,6 +134,7 @@
                     </div>
                 @endforeach
             </div>
+            @enddesktop()
 
             <div class="pagination justify-content-center">
                 {!! $videos->links('pagination::bootstrap-4') !!}
@@ -134,8 +150,8 @@
         <div class="container-fluid">
             <div class="container">
                 <div class="footer-info">
-                    <h2>{{ __('Hania Sinjab') }}</h2>
-                    <h3>{{ __('Damascus - Syria') }}</h3>
+                    <h2>{{ __('messages.hania sinjab') }}</h2>
+                    <h3>{{ __('messages.syria') }}</h3>
                     <div class="footer-menu">
                         <h3>+012 345 67890</h3>
                         <h3>info@example.com</h3>
@@ -150,7 +166,7 @@
                 </div>
             </div>
             <div class="container copyright">
-                <p>&copy; <a href="#">{{ __('Hania Sinjab') }}</a>, All Right Reserved | Designed By <a
+                <p>&copy; <a href="#">{{ __('messages.hania sinjab') }}</a>, All Right Reserved | Designed By <a
                         href="https://crazybeeez.com">Crazy Beeez</a></p>
             </div>
         </div>

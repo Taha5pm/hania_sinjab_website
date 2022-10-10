@@ -37,26 +37,27 @@
 
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto">
-                    <a href="#home" class="nav-item nav-link active">{{ __('Home') }}</a>
-                    <a href="#about" class="nav-item nav-link">{{ __('About') }}</a>
-                    <a href="#experience" class="nav-item nav-link">{{ __('Experience') }}</a>
-                    <a href="#portfolio" class="nav-item nav-link">{{ __('Course') }}</a>
-                    <a href="#contact" class="nav-item nav-link">{{ __('Contact') }}</a>
+                    <a href="#home" class="nav-item nav-link active">{{ __('messages.home') }}</a>
+                    <a href="#about" class="nav-item nav-link">{{ __('messages.about') }}</a>
+                    <a href="#experience" class="nav-item nav-link">{{ __('messages.experience') }}</a>
+                    <a href="#portfolio" class="nav-item nav-link">{{ __('messages.course') }}</a>
+                    <a href="#contact" class="nav-item nav-link">{{ __('messages.contact') }}</a>
                     @if (Auth::check())
-                        <a href="{{ route('sub_logout') }}" class="nav-item nav-link">{{ __('Logout') }}</a>
+                        <a href="{{ route('sub_logout') }}" class="nav-item nav-link">{{ __('messages.logout') }}</a>
                     @else
-                        <a href="{{ route('sub_login') }}" class="nav-item nav-link">{{ __('Login') }}</a>
+                        <a href="{{ route('sub_login') }}" class="nav-item nav-link">{{ __('messages.login') }}</a>
                     @endif
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ Config::get('languages')[App::getLocale()] }}
+                            {{ __('messages.' . Config::get('languages')[App::getLocale()]) }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             @foreach (Config::get('languages') as $lang => $language)
                                 @if ($lang != App::getLocale())
                                     <a class="dropdown-item" href="{{ route('lang.switch', $lang) }}">
-                                        {{ $language }}</a>
+                                        {{ __('messages.' . $language) }}
+                                    </a>
                                 @endif
                             @endforeach
                         </div>
@@ -78,11 +79,11 @@
                             <br>
                             <p> </p>
                             <p>{{ __('messages.i am') }}</p>
-                            <h1>{{ __('Hania Sinjab') }}</h1>
+                            <h1>{{ __('messages.hania sinjab') }}</h1>
                             <h2></h2>
-                            <div class="typed-text">
-                                {{ __('Social Worker, Life Coaching, Psychological Comfort Content') }}
-                            </div>
+                            <div class="typed-text"> {{ __('messages.social worker') }}, </div>
+                            <div class="typed-text">{{ __('messages.life coaching') }}, </div>
+                            <div class="typed-text">{{ __('messages.psychological comfort content') }}</div>
                         </div>
                     </div>
                 </div>
@@ -96,8 +97,8 @@
     <div class="service" data-wow-delay="0.1s" id="about">
         <div class="container">
             <div class="section-header text-center">
-                <p>{{ __('Learn About Me') }}</p>
-                <h2>{{ __('10 Years Experience') }}</h2>
+                <p>{{ __('messages.learn about me') }}</p>
+                <h2>{{ __('messages.years experience') }}</h2>
             </div>
             <div>
                 <p>
@@ -112,15 +113,15 @@
     <div class="experience" id="experience">
         <div class="container">
             <header class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
-                <p>{{ __('My Resume') }}</p>
-                <h2>{{ __('Working Experience') }}</h2>
+                <p>{{ __('messages.my resume') }}</p>
+                <h2>{{ __('messages.working experience') }}</h2>
             </header>
             <div class="timeline">
                 <div class="timeline-item left wow slideInLeft" data-wow-delay="0.1s">
                     <div class="timeline-text">
                         <div class="timeline-date">2015 - 2020</div>
-                        <h2>{{ __('Social Worker') }}</h2>
-                        <h4>{{ __('Damascus - Syria') }}</h4>
+                        <h2>{{ __('messages.social worker') }}</h2>
+                        <h4>{{ __('messages.syria') }}</h4>
                         <p>
                             ----------------------any thing --------------------------
                         </p>
@@ -129,8 +130,8 @@
                 <div class="timeline-item right wow slideInRight" data-wow-delay="0.1s">
                     <div class="timeline-text">
                         <div class="timeline-date">2010 - 2015</div>
-                        <h2>{{ __('Psychological Comfort Content') }}</h2>
-                        <h4>{{ __('Damascus - Syria') }}</h4>
+                        <h2>{{ __('messages.life coaching') }}</h2>
+                        <h4>{{ __('messages.syria') }}</h4>
                         <p>
                             ----------------------any thing --------------------------
                         </p>
@@ -139,8 +140,8 @@
                 <div class="timeline-item left wow slideInLeft" data-wow-delay="0.1s">
                     <div class="timeline-text">
                         <div class="timeline-date">2005 - 2010</div>
-                        <h2>{{ __('Life Coaching') }}</h2>
-                        <h4>{{ __('Damascus - Syria') }}</h4>
+                        <h2>{{ __('messages.psychological comfort content') }}</h2>
+                        <h4>{{ __('messages.syria') }}</h4>
                         <p>
                             ----------------------any thing --------------------------
                         </p>
@@ -156,14 +157,15 @@
     <div class="banner wow zoomIn" data-wow-delay="0.1s">
         <div class="container">
             <div class="section-header text-center">
-                <p>{{ __('Reasonable Price') }}</p>
-                <h2>{{ __('Get A') }} <span>{{ __('Special') }}</span> {{ __('Price') }}</h2>
+                <p>{{ __('messages.reasonable price') }}</p>
+                <h2>{{ __('messages.get a') }} <span>{{ __('messages.special') }}</span> {{ __('messages.price') }}
+                </h2>
             </div>
             <div class="container banner-text">
                 <p>
-                    {{ __('Subscribe To Courses Now') }}
+                    {{ __('messages.subscribe') }}
                 </p>
-                <a class="btn" href="{{ route('course.index') }}">{{ __('View Courses') }}</a>
+                <a class="btn" href="{{ route('course.index') }}">{{ __('messages.view courses') }}</a>
             </div>
         </div>
     </div>
@@ -174,19 +176,9 @@
     <div class="portfolio" id="portfolio">
         <div class="container">
             <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
-                <p>{{ __('Courses') }}</p>
-                <h2>{{ __('My Latest Courses') }}</h2>
+                <p>{{ __('messages.course') }}</p>
+                <h2>{{ __('messages.latest') }}</h2>
             </div>
-            {{-- <div class="row">
-                <div class="col-12">
-                    <ul id="portfolio-filter">
-                        <li data-filter="*" class="filter-active">All</li>
-                        <li data-filter=".filter-1">Web Design</li>
-                        <li data-filter=".filter-2">Mobile Apps</li>
-                        <li data-filter=".filter-3">Game Dev</li>
-                    </ul>
-                </div>
-            </div> --}}
             <div class="blog" id="blog">
                 <div class="container">
                     <div class="row">
@@ -198,7 +190,8 @@
                                         <p>
                                             {{ $course->description }}
                                         </p>
-                                        <a href="{{ route('videocourse', $course->id) }}" class="btn">View</a>
+                                        <a href="{{ route('videocourse', $course->id) }}"
+                                            class="btn">{{ __('messages.view') }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -208,7 +201,7 @@
             </div>
             <div>
                 <ul id="portfolio-filter">
-                    <a class="btn" href="{{ route('course.index') }}">{{ __('More Courses') }}</a>
+                    <a class="btn" href="{{ route('course.index') }}">{{ __('messages.more courses') }}</a>
                 </ul>
             </div>
         </div>
@@ -220,8 +213,8 @@
         <div class="container-fluid">
             <div class="container">
                 <div class="footer-info">
-                    <h2>{{ __('Hania Sinjab') }}</h2>
-                    <h3>{{ __('Damascus - Syria') }}</h3>
+                    <h2>{{ __('messages.hania sinjab') }}</h2>
+                    <h3>{{ __('messages.syria') }}</h3>
                     <div class="footer-menu">
                         <h3>+012 345 67890</h3>
                         <h3>info@example.com</h3>
@@ -236,7 +229,7 @@
                 </div>
             </div>
             <div class="container copyright">
-                <p>&copy; <a href="#">{{ __('Hania Sinjab') }}</a>, All Right Reserved | Designed By <a
+                <p>&copy; <a href="#">{{ __('messages.hania sinjab') }}</a>, All Right Reserved | Designed By <a
                         href="https://crazybeeez.com">Crazy Beeez</a></p>
             </div>
         </div>
