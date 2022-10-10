@@ -2,7 +2,7 @@
 /********* General CSS *********/
 /*******************************/
 body {
-    color: #797979;
+    color: #008346;
     background: #ffffff;
     font-family: 'FONTSPRING DEMO - Artico Medium', 'FONTSPRING DEMO - Artico ExtraLight';
     font-style: italic;
@@ -18,7 +18,7 @@ h6 {
 }
 
 a {
-    color: #313131;
+    color: #414141;
     transition: .3s;
 }
 
@@ -181,7 +181,7 @@ a:focus {
 
     .navbar.nav-sticky {
         padding: 10px 60px;
-        background: #ffffff !important;
+        background: url(../img/image2.jpg) !important;
     }
 
     .navbar .navbar-brand {
@@ -223,7 +223,7 @@ a:focus {
     }
 
     .navbar .navbar-brand {
-        color: #fcc482f2;
+        color: #414141;
     }
 
     .navbar .navbar-nav {
@@ -440,7 +440,7 @@ a:focus {
     top: 11px;
     right: 0;
     left: -30px;
-    /* background: #fcc482f2; */
+    /* background: #414141; */
     z-index: -1;
 }
 
@@ -451,7 +451,7 @@ a:focus {
     height: 3px;
     top: 11px;
     left: 3px;
-    /* background: #fcc482f2; */
+    /* background: #414141; */
     z-index: 1;
 }
 
@@ -533,7 +533,7 @@ a:focus {
 
 .about .progress .progress-bar {
     width: 0px;
-    background: #fcc482f2;
+    background: #414141;
     border-radius: 10px;
     transition: 2s;
 }
@@ -744,7 +744,7 @@ a:focus {
 }
 
 .service .service-item:hover {
-    box-shadow: inset 800px 0 0 0 #fcc482f2;
+    box-shadow: inset 800px 0 0 0 #414141;
 }
 
 .service .service-icon {
@@ -754,14 +754,14 @@ a:focus {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #fcc482f2;
+    border: 1px solid #414141;
     background: #ffffff;
 }
 
 .service .service-icon i {
     position: relative;
     font-size: 60px;
-    color: #fcc482f2;
+    color: #414141;
     transition: .3s;
 }
 
@@ -853,6 +853,10 @@ a:focus {
 .portfolio .portfolio-wrap {
     position: relative;
     width: 100%;
+}
+.portfolio .portfolio-wrap-m {
+    position: relative;
+    width: 50%;
 }
 
 .portfolio .portfolio-img {
@@ -1031,7 +1035,7 @@ a:focus {
 }
 
 .price .price-item.featured-item .price-header {
-    color: #fcc482f2;
+    color: #414141;
 }
 
 .price .price-title h2 {
@@ -1061,7 +1065,7 @@ a:focus {
 }
 
 .price .price-item.featured-item h2 {
-    color: #fcc482f2;
+    color: #414141;
 }
 
 .price .price-body {
@@ -1097,15 +1101,15 @@ a:focus {
 
 .price .price-item.featured-item .price-action .btn {
     color: #006938;
-    background: #fcc482f2;
-    box-shadow: inset 0 0 0 50px #fcc482f2;
+    background: #414141;
+    box-shadow: inset 0 0 0 50px #414141;
 }
 
 .price .price-item.featured-item .price-action .btn:hover {
-    color: #fcc482f2;
+    color: #414141;
     background: transparent;
-    box-shadow: inset 0 0 0 0 #fcc482f2;
-    border-color: #fcc482f2;
+    box-shadow: inset 0 0 0 0 #414141;
+    border-color: #414141;
 }
 
 
@@ -1187,7 +1191,7 @@ a:focus {
 }
 
 .team .team-item:hover {
-    box-shadow: inset 800px 0 0 0 #fcc482f2;
+    box-shadow: inset 800px 0 0 0 #414141;
 }
 
 .team .team-item:hover .team-img img {
@@ -1237,7 +1241,7 @@ a:focus {
     position: relative;
     margin: 45px 0;
     padding: 90px 0;
-    background: #fcc482f2;
+    background: #414141;
 }
 
 .testimonial .container {
@@ -1327,7 +1331,7 @@ a:focus {
     position: relative;
     width: 50%;
     margin: 45px 0;
-    background: #fcc482f2;
+    background: #414141;
 }
 
 .contact .container-fluid {
@@ -1337,7 +1341,7 @@ a:focus {
 .contact .contact-form {
     position: relative;
     padding: 90px 0 90px 45px;
-    background: #fcc482f2;
+    background: #414141;
 }
 
 .contact .contact-form input {
@@ -1371,7 +1375,7 @@ a:focus {
 
 .contact .contact-form .btn {
     margin-top: 35px;
-    color: #fcc482f2;
+    color: #414141;
     background: #ffffff;
     box-shadow: inset 0 0 0 50px #ffffff;
 }
@@ -1656,7 +1660,7 @@ svg {
 }
 path {
   fill:none;
-  stroke:#fcc482f2;
+  stroke:#414141;
   stroke-dasharray: 150 150;
   stroke-width:15;
 }

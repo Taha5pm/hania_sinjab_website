@@ -52,6 +52,14 @@
     <!-- Nav Bar End -->
 
     <!-- Hero Start -->
+    @mobile()
+    <div class="portfolio" id="home">
+        <div class="container-fluid">
+
+        </div>
+    </div>
+    @endmobile()
+    @desktop()
     <div class="hero" id="home">
         <div class="container-fluid">
             <div class="row align-items-center">
@@ -66,6 +74,7 @@
             </div>
         </div>
     </div>
+    @enddesktop()
     <!-- Hero End -->
 
     <!-- Blog Start -->
@@ -84,6 +93,7 @@
                 </form>
             </div>
             <div class="row">
+                @mobile()
 
                 @foreach ($courses as $course)
                     <div class="col-lg-4">
@@ -98,6 +108,24 @@
                         </div>
                     </div>
                 @endforeach
+
+                @endmobile()
+
+                @desktop()
+                @foreach ($courses as $course)
+                    <div class="col-lg-4">
+                        <div class="blog-item wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="blog-text">
+                                <h2>{{ $course->name }}</h2>
+                                <p>
+                                    {{ $course->description }}
+                                </p>
+                                <a href="{{ route('videocourse', $course->id) }}" class="btn">View</a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+                @enddesktop()
             </div>
 
             <div class="pagination justify-content-center">
