@@ -144,12 +144,18 @@ class VideoController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
+     * @param int $id
      * @param  \App\Models\video  $video
      * @return \Illuminate\Http\Response
      */
-    public function destroy(video $video)
+    public function delete($id)
     {
-        //
+        $path = video::all()->where('id', '=', $id)->value('path');
+        $course_id = video::all()->where('id', '=', $id)->value('course_id');
+        if (File::exists($path)) {
+            File::delete($path);
+        }
+        video::where('id', '=', $id)->delete();
+        return redirect()->route('superadmin.video.show', $course_id);
     }
 }

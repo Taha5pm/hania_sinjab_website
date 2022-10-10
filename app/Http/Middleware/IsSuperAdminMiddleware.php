@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class IsSuperAdminMiddleware
 {
@@ -17,6 +19,12 @@ class IsSuperAdminMiddleware
     public function handle(Request $request, Closure $next)
     {
         if (!auth()->check() || auth()->user()->role != 'superadmin') {
+            Auth::guard('user')->logout();
+
+            $request->session()->invalidate();
+
+            $request->session()->regenerateToken();
+
             abort(403);
         }
         return $next($request);

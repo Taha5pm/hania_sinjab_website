@@ -53,7 +53,7 @@
                                 </label>
                                 <textarea
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-5 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="description" name="description" rows="3" cols="3"></textarea>
+                                    id="description" name="description" rows="3" cols="3" required></textarea>
                             </div>
                             <div class="w-full md:w-1/2 px-3">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -62,7 +62,7 @@
                                 </label>
                                 <input
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-5 leading-tight focus:outline-none focus:bg-white"
-                                    type='file' name='video' id='video'>
+                                    type='file' name='video' id='video' required>
                             </div>
 
                             <div class="md:flex md:items-center">

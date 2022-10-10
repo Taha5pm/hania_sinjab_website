@@ -67,16 +67,23 @@
                                             <a href="{{ route('superadmin.video', $course->id) }}">
                                                 <button
                                                     class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold  py-2 px-6 rounded">
-                                                    Add Video
+                                                    Manage Videos
+                                                </button>
+                                            </a>
+
+                                            <a href="{{ route('superadmin.course.edit', $course->id) }}">
+                                                <button
+                                                    class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold  py-2 px-6 rounded">
+                                                    Edit
                                                 </button>
                                             </a>
                                         </th>
                                         <th scope="row"
                                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50  ">
-                                            <a href="{{ route('superadmin.course.edit', $course->id) }}">
+                                            <a href="{{ route('superadmin.course.delete', $course->id) }}">
                                                 <button
-                                                    class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold  py-2 px-6 rounded">
-                                                    Edit Course
+                                                    class="shadow bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white font-bold  py-2 px-6 rounded">
+                                                    Delete
                                                 </button>
                                             </a>
                                         </th>

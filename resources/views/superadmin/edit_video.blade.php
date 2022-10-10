@@ -36,38 +36,39 @@
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-5 leading-tight focus:outline-none focus:bg-white"
                                     id="course_name" type="text" value="{{ $course->value('name') }}">
                             </div>
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                for="title">
-                                Title
-                            </label>
-                            <input
-                                class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-5 leading-tight focus:outline-none focus:bg-white"
-                                id="title" name='title' type="text" value="{{ $video->value('title') }}">
-                        </div>
-                        <div class="w-full md:w-1/2 px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                for="description">
-                                Description
-                            </label>
-                            <textarea
-                                class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-5 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                id="description" name="description" rows="3" cols="3">{{ $video->value('title') }}</textarea>
-                        </div>
-                        <div class="md:flex md:items-center">
-                            <div class="md:w-2/4"></div>
-                            <div class="md:w-2/3">
+                            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                    for="title">
+                                    Title
+                                </label>
+                                <input
+                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-5 leading-tight focus:outline-none focus:bg-white"
+                                    id="title" name='title' type="text" value="{{ $video->value('title') }}">
+                            </div>
+                            <div class="w-full md:w-1/2 px-3">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                    for="description">
+                                    Description
+                                </label>
+                                <textarea
+                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-5 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                    id="description" name="description" rows="3" cols="3">{{ $video->value('title') }}</textarea>
+                            </div>
+                            <div class="md:flex md:items-center">
+                                <div class="md:w-2/4"></div>
+                                <div class="md:w-2/3">
 
-                                <button
-                                    class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-10 rounded">
-                                    Save
-                                </button>
+                                    <button
+                                        class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-10 rounded">
+                                        Save
+                                    </button>
 
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </form>
 </x-app-layout>

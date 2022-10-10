@@ -43,7 +43,7 @@
                                 </label>
                                 <input
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-5 leading-tight focus:outline-none focus:bg-white"
-                                    id="fname" name='fname' type="text" placeholder="rami">
+                                    id="fname" name='fname' type="text" placeholder="rami" required>
                             </div>
                             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -52,7 +52,7 @@
                                 </label>
                                 <input
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-5 leading-tight focus:outline-none focus:bg-white"
-                                    id="lname" name='lname' type="text" placeholder="dodo">
+                                    id="lname" name='lname' type="text" placeholder="dodo" required>
                             </div>
                             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -61,7 +61,8 @@
                                 </label>
                                 <input
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-5 leading-tight focus:outline-none focus:bg-white"
-                                    id="email" name='email' type="email" placeholder="example@company.com">
+                                    id="email" name='email' type="email" placeholder="example@company.com"
+                                    required>
                             </div>
                             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -70,7 +71,7 @@
                                 </label>
                                 <input
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-5 leading-tight focus:outline-none focus:bg-white"
-                                    id="password" name='password' type="password" placeholder="**********">
+                                    id="password" name='password' type="password" placeholder="**********" required>
                             </div>
                             <input type="hidden" name='role' value="admin">
                             <div class="md:flex md:items-center">

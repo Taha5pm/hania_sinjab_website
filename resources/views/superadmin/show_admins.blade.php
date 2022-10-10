@@ -71,6 +71,15 @@
                                                 </button>
                                             </a>
                                         </th>
+                                        <th scope="row"
+                                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50  ">
+                                            <a href="{{ route('superadmin.subscriber.admin.delete', $admin->id) }}">
+                                                <button
+                                                    class="shadow bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white font-bold  py-2 px-6 rounded">
+                                                    Delete
+                                                </button>
+                                            </a>
+                                        </th>
                                     </tr>
                                 @endforeach
                             </tbody>

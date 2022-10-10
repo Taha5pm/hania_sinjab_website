@@ -4,7 +4,12 @@ namespace App\Http\Controllers;
 
 
 use App\Models\course;
+use App\Models\video;
+use Directory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+
+
 
 class CourseController extends Controller
 {
@@ -113,12 +118,30 @@ class CourseController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
+     * @param int $id
      * @param  \App\Models\course  $course
      * @return \Illuminate\Http\Response
      */
-    public function destroy(course $course)
+    public function delete($id)
     {
-        //
+        $videos = video::all()->where('course_id', '=', $id);
+        $course_name = course::all()->where('id', '=', $id)->value('name');
+
+        foreach ($videos as $video) {
+            if (File::exists($video->path)) {
+                File::delete($video->path);
+            }
+            video::where('id', '=', $video->id)->delete();
+        }
+        $thumb_path = public_path('videos') . '/' . $course_name . '/thumbnails';
+        if (File::isDirectory($thumb_path)) {
+            rmdir($thumb_path);
+        }
+        $course_path = public_path('videos') . '/' . $course_name;
+        if (File::isDirectory($course_path)) {
+            rmdir($course_path);
+        }
+        course::where('id', '=', $id)->delete();
+        return redirect()->route('superadmin.course.show');
     }
 }

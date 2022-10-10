@@ -36,7 +36,7 @@ class SubscriberController extends Controller
         if ($request->role == 'subscriber') {
             return redirect()->route('superadmin.subscriber');
         } else {
-            return redirect()->route('superadmin.admin');
+            return redirect()->route('superadmin.subscriber.admin');
         }
     }
     public function show()
@@ -84,6 +84,25 @@ class SubscriberController extends Controller
         $sub = User::all()->where('id', '=', $id);
 
         if ($sub->value('role') == 'subscriber') {
+            return redirect()->route('superadmin.subscriber.show');
+        } else {
+            return redirect()->route('superadmin.subscriber.admin.show');
+        }
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *@param int $id
+     * @param  \App\Models\video  $video
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id)
+    {
+        $user_role = User::all()->where('id', '=', $id)->value('role');
+
+        User::where('id', '=', $id)->delete();
+
+        if ($user_role == 'subscriber') {
             return redirect()->route('superadmin.subscriber.show');
         } else {
             return redirect()->route('superadmin.subscriber.admin.show');
