@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class course extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'description', 'field', 'price'];
+    protected $fillable = [
+        'name_ar', 'name_en', 'description_ar', 'description_en',
+        'field_ar', 'field_en', 'price'
+    ];
 
     public function videos()
     {

@@ -31,7 +31,10 @@
                                         Title
                                     </th>
                                     <th scope="col" class="py-3 px-6  bg-gray-50 ">
-                                        Description
+                                        Arabic Description
+                                    </th>
+                                    <th scope="col" class="py-3 px-6  bg-gray-50 ">
+                                        English Description
                                     </th>
                                     <th scope="col" class="py-3 px-6  bg-gray-50 ">
 
@@ -49,7 +52,11 @@
                                         </th>
                                         <th scope="row"
                                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 ">
-                                            {{ $video->description }}
+                                            {{ $video->description_ar }}
+                                        </th>
+                                        <th scope="row"
+                                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 ">
+                                            {{ $video->description_en }}
                                         </th>
                                         <th scope="row"
                                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50  ">

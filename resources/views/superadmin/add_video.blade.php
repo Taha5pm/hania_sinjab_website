@@ -44,16 +44,26 @@
                                 </label>
                                 <input readonly
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-5 leading-tight focus:outline-none focus:bg-white"
-                                    id="course_name" type="text" value="{{ $course->value('name') }}">
+                                    id="course_name" type="text"
+                                    value="{{ $course->value('name_en') }} || {{ $course->value('name_ar') }}">
                             </div>
                             <div class="w-full md:w-1/2 px-3">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                    for="description">
-                                    Description
+                                    for="description_ar">
+                                    Arabic Description
                                 </label>
                                 <textarea
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-5 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="description" name="description" rows="3" cols="3" required></textarea>
+                                    id="description_ar" name="description_ar" rows="3" cols="3" required></textarea>
+                            </div>
+                            <div class="w-full md:w-1/2 px-3">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                    for="description_en">
+                                    English Description
+                                </label>
+                                <textarea
+                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-5 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                    id="description_en" name="description_en" rows="3" cols="3" required></textarea>
                             </div>
                             <div class="w-full md:w-1/2 px-3">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
