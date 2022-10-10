@@ -47,6 +47,20 @@
                     @else
                         <a href="{{ route('sub_login') }}" class="nav-item nav-link">{{ __('Login') }}</a>
                     @endif
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ Config::get('languages')[App::getLocale()] }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            @foreach (Config::get('languages') as $lang => $language)
+                                @if ($lang != App::getLocale())
+                                    <a class="dropdown-item" href="{{ route('lang.switch', $lang) }}">
+                                        {{ $language }}</a>
+                                @endif
+                            @endforeach
+                        </div>
+                    </li>
                 </div>
             </div>
         </div>
@@ -63,7 +77,7 @@
                         <div class="hero-text">
                             <br>
                             <p> </p>
-                            <p>{{ __('I am') }}</p>
+                            <p>{{ __('messages.i am') }}</p>
                             <h1>{{ __('Hania Sinjab') }}</h1>
                             <h2></h2>
                             <div class="typed-text">
