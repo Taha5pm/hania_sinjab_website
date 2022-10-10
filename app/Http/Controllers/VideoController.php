@@ -69,7 +69,8 @@ class VideoController extends Controller
     public function store(Request $request, $id)
     {
         $video = new video();
-        $video->description = $request->description;
+        $video->description_ar = $request->description_ar;
+        $video->description_en = $request->description_en;
         $video->course_id = $id;
         $course_name = Course::all()->where('id', '=', $id)->value('name');
         $tempvideo = Videotempo::where('foldername', $request->video)->first();
@@ -136,7 +137,8 @@ class VideoController extends Controller
     public function update(Request $request, $id)
     {
         $video = video::where('id', '=', $id)->update([
-            'title' => $request->title, 'description' => $request->description
+            'title' => $request->title, 'description_ar' => $request->description_ar,
+            'description_en' => $request->description_en
         ]);
         $course_id = video::where('id', '=', $id)->value('course_id');
         return redirect()->route('superadmin.video.show', $course_id);

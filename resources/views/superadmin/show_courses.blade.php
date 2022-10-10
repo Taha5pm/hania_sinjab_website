@@ -28,13 +28,22 @@
                             <thead class="text-xs text-gray-700 uppercase ">
                                 <tr>
                                     <th scope="col" class="py-3 px-6 bg-gray-50 ">
-                                        Name
+                                        Arabic Name
+                                    </th>
+                                    <th scope="col" class="py-3 px-6 bg-gray-50 ">
+                                        English Name
                                     </th>
                                     <th scope="col" class="py-3 px-6  bg-gray-50 ">
-                                        Description
+                                        Arabic Description
                                     </th>
                                     <th scope="col" class="py-3 px-6  bg-gray-50 ">
-                                        Field
+                                        English Description
+                                    </th>
+                                    <th scope="col" class="py-3 px-6  bg-gray-50 ">
+                                        Arabic Field
+                                    </th>
+                                    <th scope="col" class="py-3 px-6  bg-gray-50 ">
+                                        English Field
                                     </th>
                                     <th scope="col" class="py-3 px-6  bg-gray-50 ">
                                         Subscription Price
@@ -48,15 +57,27 @@
                                     <tr class="border-b border-gray-200 ">
                                         <th scope="row"
                                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 ">
-                                            {{ $course->name }}
+                                            {{ $course->name_ar }}
                                         </th>
                                         <th scope="row"
                                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 ">
-                                            {{ $course->description }}
+                                            {{ $course->name_en }}
                                         </th>
                                         <th scope="row"
                                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 ">
-                                            {{ $course->field }}
+                                            {{ $course->description_ar }}
+                                        </th>
+                                        <th scope="row"
+                                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 ">
+                                            {{ $course->description_en }}
+                                        </th>
+                                        <th scope="row"
+                                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 ">
+                                            {{ $course->field_ar }}
+                                        </th>
+                                        <th scope="row"
+                                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 ">
+                                            {{ $course->field_en }}
                                         </th>
                                         <th scope="row"
                                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 ">

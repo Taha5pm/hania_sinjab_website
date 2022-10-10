@@ -96,7 +96,11 @@
     <div class="portfolio" id="portfolio">
         <div class="container">
             <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
-                <p>{{ $course->value('name') }}</p>
+                @if (app()->getLocale() == 'en')
+                    <p>{{ $course->value('name_en') }}</p>
+                @else
+                    <p>{{ $course->value('name_ar') }}</p>
+                @endif
                 <h6>{{ $video->value('title') }}</h6>
             </div>
             <div class="portfolio-filter">

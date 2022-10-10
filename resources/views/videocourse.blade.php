@@ -96,8 +96,13 @@
     <div class="portfolio" id="portfolio">
         <div class="container">
             <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
-                <p>{{ $course->value('name') }}</p>
+                @if (app()->getLocale() == 'en')
+                    <p>{{ $course->value('name_en') }}</p>
+                @else
+                    <p>{{ $course->value('name_ar') }}</p>
+                @endif
                 <h2>{{ __('') }}</h2>
+
             </div>
             @mobile()
             <div class="portfolio-container">
@@ -109,7 +114,11 @@
                                     <img src="{{ asset('') }}/logo.png">
                                 </div>
                                 <div class="portfolio-text-t portfolio-text">
-                                    <h5>{{ $video->description }}</h5>
+                                    @if (app()->getLocale() == 'en')
+                                        <h5>{{ $video->description_en }}</h5>
+                                    @else
+                                        <h5>{{ $video->description_ar }}</h5>
+                                    @endif
                                 </div>
                             </a>
                         </div>
@@ -127,7 +136,11 @@
                                     <img src="{{ asset('') }}/logo.png">
                                 </div>
                                 <div class="portfolio-text-t portfolio-text">
-                                    <h5>{{ $video->description }}</h5>
+                                    @if (app()->getLocale() == 'en')
+                                        <h5>{{ $video->description_en }}</h5>
+                                    @else
+                                        <h5>{{ $video->description_ar }}</h5>
+                                    @endif
                                 </div>
                             </div>
                         </a>

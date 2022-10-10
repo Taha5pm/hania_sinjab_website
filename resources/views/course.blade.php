@@ -114,10 +114,17 @@
                     <div class="col-lg-4">
                         <div class="blog-item wow fadeInUp" data-wow-delay="0.1s">
                             <div class="blog-text">
-                                <h2>{{ $course->name }}</h2>
-                                <p>
-                                    {{ $course->description }}
-                                </p>
+                                @if (app()->getLocale() == 'en')
+                                    <h2>{{ $course->name_en }}</h2>
+                                    <p>
+                                        {{ $course->description_en }}
+                                    </p>
+                                @else
+                                    <h2>{{ $course->name_ar }}</h2>
+                                    <p>
+                                        {{ $course->description_ar }}
+                                    </p>
+                                @endif
                                 <a href="{{ route('videocourse', $course->id) }}" class="btn">View</a>
                             </div>
                         </div>
@@ -131,10 +138,17 @@
                     <div class="col-lg-4">
                         <div class="blog-item wow fadeInUp" data-wow-delay="0.1s">
                             <div class="blog-text">
-                                <h2>{{ $course->name }}</h2>
-                                <p>
-                                    {{ $course->description }}
-                                </p>
+                                @if (app()->getLocale() == 'en')
+                                    <h2>{{ $course->name_en }}</h2>
+                                    <p>
+                                        {{ $course->description_en }}
+                                    </p>
+                                @else
+                                    <h2>{{ $course->name_ar }}</h2>
+                                    <p>
+                                        {{ $course->description_ar }}
+                                    </p>
+                                @endif
                                 <a href="{{ route('videocourse', $course->id) }}"
                                     class="btn">{{ __('messages.view') }}</a>
                             </div>

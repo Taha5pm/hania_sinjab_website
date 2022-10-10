@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class video extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
-    protected $fillable = ['course_id', 'description', 'tags', 'title'];
+    protected $fillable = ['course_id', 'description_ar', 'description_en', 'path', 'title'];
 
     public function courses()
     {
