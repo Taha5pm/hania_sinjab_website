@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\receipt;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -25,6 +26,13 @@ class SubscriberController extends Controller
      */
     public function store(Request $request)
     {
+        $valid = $request->validate([
+            'fname' => ['required', 'max:50'],
+            'lname' => ['required', 'max:50'],
+            'email' => ['required', 'email:rfc,dns', 'max:255'],
+            'role' =>  ['required'],
+            'password' =>  ['required'],
+        ]);
         $sub = new User();
         $sub->fname = $request->fname;
         $sub->lname = $request->lname;
@@ -41,12 +49,13 @@ class SubscriberController extends Controller
     }
     public function show()
     {
-        $subs = User::select('*')->where('role', '=', 'subscriber')->orderBy('id', 'desc')->get();
-        return view('superadmin.show_subscribers', ['subs' => $subs]);
+        $subs = User::select('*')->where('role', '=', 'subscriber')->orderBy('id', 'desc')->paginate(6);
+        $sub_sub = receipt::all();
+        return view('superadmin.show_subscribers', ['subs' => $subs, 'sub_sub' => $sub_sub]);
     }
     public function show_admin()
     {
-        $admins = User::select('*')->where('role', '=', 'admin')->orderBy('id', 'desc')->get();
+        $admins = User::select('*')->where('role', '=', 'admin')->orderBy('id', 'desc')->paginate(6);
         return view('superadmin.show_admins', ['admins' => $admins]);
     }
 
@@ -77,10 +86,22 @@ class SubscriberController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $sub = User::where('id', '=', $id)->update([
-            'fname' => $request->fname, 'lname' => $request->lname,
-            'email' => $request->email,
+        $valid = $request->validate([
+            'fname' => ['required', 'max:50'],
+            'lname' => ['required', 'max:50'],
+            'email' => ['required', 'email:rfc,dns', 'max:255'],
         ]);
+        if ($request->has('password')) {
+            $sub = User::where('id', '=', $id)->update([
+                'fname' => $request->fname, 'lname' => $request->lname,
+                'email' => $request->email, 'password' => Hash::make($request->password),
+            ]);
+        } else {
+            $sub = User::where('id', '=', $id)->update([
+                'fname' => $request->fname, 'lname' => $request->lname,
+                'email' => $request->email,
+            ]);
+        }
         $sub = User::all()->where('id', '=', $id);
 
         if ($sub->value('role') == 'subscriber') {

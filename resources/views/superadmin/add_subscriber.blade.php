@@ -36,6 +36,22 @@
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="flex-wrap -mx-3 mb-6">
+                            @if ($errors->any())
+                                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <label
+                                                    class="block uppercase tracking-wide text-red-700 text-xs font-bold mb-2"
+                                                    for="name_ar">
+                                                    <li>{{ $error }}</li>
+
+                                                </label>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </div>
+                            @endif
                             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                     for="fname">
@@ -43,7 +59,8 @@
                                 </label>
                                 <input
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-5 leading-tight focus:outline-none focus:bg-white"
-                                    id="fname" name='fname' type="text" placeholder="rami" required>
+                                    id="fname" name='fname' type="text" placeholder="rami" required
+                                    value="{{ old('fname') }}">
                             </div>
                             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -52,7 +69,8 @@
                                 </label>
                                 <input
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-5 leading-tight focus:outline-none focus:bg-white"
-                                    id="lname" name='lname' type="text" placeholder="dodo" required>
+                                    id="lname" name='lname' type="text" placeholder="dodo" required
+                                    value="{{ old('lname') }}">
                             </div>
                             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -62,7 +80,7 @@
                                 <input
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-5 leading-tight focus:outline-none focus:bg-white"
                                     id="email" name='email' type="email" placeholder="example@company.com"
-                                    required>
+                                    {{ old('email') }} required>
                             </div>
                             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"

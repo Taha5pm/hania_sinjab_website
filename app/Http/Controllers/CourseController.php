@@ -47,6 +47,14 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
+        $valid = $request->validate([
+            'name_ar' => ['required', 'max:255'],
+            'name_en' => ['required', 'max:255'],
+            'description_ar' => ['required', 'max:400'],
+            'description_en' => ['required', 'max:400'],
+            'field_ar' => ['required', 'max:255'],
+            'field_en' => ['required', 'max:255'],
+        ]);
 
         $course = new course();
         $course->name_ar = $request->name_ar;
@@ -55,7 +63,7 @@ class CourseController extends Controller
         $course->description_en = $request->description_en;
         $course->field_ar = $request->field_ar;
         $course->field_en = $request->field_en;
-        $course->price = $request->price;
+        // $course->price = $request->price;
         $course->save();
 
         return redirect()->route('superadmin.course');
@@ -69,7 +77,7 @@ class CourseController extends Controller
      */
     public function show(course $course)
     {
-        $courses = Course::select('*')->orderBy('id', 'desc')->get();
+        $courses = Course::select('*')->orderBy('id', 'desc')->paginate(6);
         return view('superadmin.show_courses', ['courses' => $courses]);
     }
     /**
@@ -111,12 +119,20 @@ class CourseController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $valid = $request->validate([
+            'name_ar' => ['required', 'max:255'],
+            'name_en' => ['required', 'max:255'],
+            'description_ar' => ['required', 'max:400'],
+            'description_en' => ['required', 'max:400'],
+            'field_ar' => ['required', 'max:255'],
+            'field_en' => ['required', 'max:255'],
+        ]);
 
         $course = course::where('id', '=', $id)->update([
             'name_ar' => $request->name_ar, 'name_en' => $request->name_en,
             'description_ar' => $request->description_ar, 'description_en' => $request->description_en,
             'field_ar' => $request->field_ar, 'field_en' => $request->field_en,
-            'price' => $request->price
+            //  'price' => $request->price
         ]);
         return redirect()->route('superadmin.course.show');
     }

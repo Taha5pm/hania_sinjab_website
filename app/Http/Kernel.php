@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\CountVisitorMiddleware;
 use App\Http\Middleware\IsLogedMiddleware;
 use App\Http\Middleware\IsSubscribedMiddleware;
 use App\Http\Middleware\IsSuperAdminMiddleware;
@@ -71,5 +72,6 @@ class Kernel extends HttpKernel
         'is_superadmin' => IsSuperAdminMiddleware::class,
         'is_loged'   => IsLogedMiddleware::class,
         'is_subscribed' => IsSubscribedMiddleware::class,
+        'visitor' => CountVisitorMiddleware::class,
     ];
 }

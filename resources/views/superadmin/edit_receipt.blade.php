@@ -3,7 +3,7 @@
         <div class="flow-root ">
             <p class="float-left text-green-600">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Make Receipt For ') }} {{ $user->value('fname') }}
+                {{ __('Edit Receipt For ') }} {{ $user->value('fname') }}
             </h2>
             </p>
 
@@ -27,7 +27,7 @@
         </div>
     </x-slot>
 
-    <form method="post" action="{{ route('superadmin.subscriber.receipt.store', $user->value('id')) }}"
+    <form method="post" action="{{ route('superadmin.subscriber.receipt.update', $receipt->value('id')) }}"
         class="form-horizontal">
         @csrf
         @method('put')
@@ -57,7 +57,9 @@
                                 <select name='course_id'
                                     @foreach ($courses as $course)
                                         class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-4">
-                                        <option value='{{ $course->id }}'>
+                                        <option value='{{ $course->id }}' @if ($course->id == $receipt->value('course_id'))
+                                            selected
+                                        @endif>
                                             {{ $course->name_ar }} || {{ $course->name_en }}
                                             {{-- - {{ $course->price }} SYP --}}
                                         </option> @endforeach
@@ -82,7 +84,7 @@
                                 <input
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-5 leading-tight focus:outline-none focus:bg-white"
                                     id="expire_date" name='expire_date' type="date" required
-                                    min="20{{ today()->format('y-m-d') }}">
+                                    value="{{ $receipt->value('expire_date') }}" min="20{{ today()->format('y-m-d') }}">
                             </div>
 
                             <div class="md:flex md:items-center">

@@ -114,11 +114,7 @@
                                     <img src="{{ asset('') }}/logo.png">
                                 </div>
                                 <div class="portfolio-text-t portfolio-text">
-                                    @if (app()->getLocale() == 'en')
-                                        <h5>{{ $video->description_en }}</h5>
-                                    @else
-                                        <h5>{{ $video->description_ar }}</h5>
-                                    @endif
+                                    <h5>{{ $video->title }}</h5>
                                 </div>
                             </a>
                         </div>
@@ -129,18 +125,30 @@
             @desktop()
             <div class="row portfolio-container">
                 @foreach ($videos as $video)
+                    @php
+                        $view = $views->where('video_id', '=', $video->id)->count();
+                        $seen = $views->where('video_id', '=', $video->id)->where('subscriber_id', '=', Auth::user()->id);
+                        if ($seen->isNotEmpty()) {
+                            $seen = true;
+                        } else {
+                            $seen = false;
+                        }
+                        if ($views == null) {
+                            $views = 0;
+                        }
+                    @endphp
+                    @if ($seen)
+                        <small>Seen</small>
+                    @endif
                     <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
+                        {{ $view }} View
                         <a href='{{ route('videocourse.play', $video->id) }}'>
                             <div class="portfolio-wrap">
                                 <div class="portfolio-img">
                                     <img src="{{ asset('') }}/logo.png">
                                 </div>
                                 <div class="portfolio-text-t portfolio-text">
-                                    @if (app()->getLocale() == 'en')
-                                        <h5>{{ $video->description_en }}</h5>
-                                    @else
-                                        <h5>{{ $video->description_ar }}</h5>
-                                    @endif
+                                    <h5>{{ $video->title }}</h5>
                                 </div>
                             </div>
                         </a>

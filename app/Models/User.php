@@ -33,6 +33,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(log::class);
     }
+    public function visitors()
+    {
+        return $this->hasMany(Visitor::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.

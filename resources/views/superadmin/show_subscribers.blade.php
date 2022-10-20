@@ -19,7 +19,7 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-10xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
 
@@ -48,6 +48,13 @@
                             </thead>
                             <tbody>
                                 @foreach ($subs as $sub)
+                                    @php
+                                        $result = $sub_sub
+                                            ->where('user_id', '=', $sub->id)
+                                            ->where('expire_date', '>', '20' . today()->format('y-m-d'))
+                                            ->value('expire_date');
+
+                                    @endphp
                                     <tr class="border-b border-gray-200 ">
                                         <th scope="row"
                                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 ">
@@ -65,6 +72,17 @@
                                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 ">
                                             {{ $sub->created_at }}
                                         </th>
+                                        @if ($result != null)
+                                            <th scope="row"
+                                                class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-green-400 ">
+                                                Subscribed
+                                            </th>
+                                        @else
+                                            <th scope="row"
+                                                class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-yellow-200 ">
+                                                Not Subscribed Yet
+                                            </th>
+                                        @endif
                                         <th>
 
                                         </th>
@@ -80,7 +98,7 @@
                                             <a href="{{ route('superadmin.subscriber.receipt', $sub->id) }}">
                                                 <button
                                                     class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold  py-2 px-6 rounded">
-                                                    Receipts
+                                                    Subscribtions
                                                 </button>
                                             </a>
                                         </th>
@@ -96,6 +114,11 @@
                                 @endforeach
                             </tbody>
                         </table>
+                    </div>
+                    <div class="container">
+                        <div>
+                            {!! $subs->links() !!}
+                        </div>
                     </div>
                 </div>
             </div>

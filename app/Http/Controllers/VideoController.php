@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\video;
 use App\Models\Course;
 use App\Models\Videotempo;
+use App\Models\View;
 use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -32,10 +33,10 @@ class VideoController extends Controller
      */
     public function sub_index($id)
     {
-
         $course = Course::all()->where('id', '=', $id);
         $videos = video::select('*')->where('course_id', '=', $id)->orderBy('id', 'desc')->paginate(6);
-        return view('videocourse', ['course' => $course, 'videos' => $videos]);
+        $views = view::all();
+        return view('videocourse', ['course' => $course, 'videos' => $videos, 'views' => $views]);
     }
 
     /**
@@ -45,7 +46,17 @@ class VideoController extends Controller
      */
     public function sub_play($id) // video id
     {
+        $viewed = view::all()->where('subscriber_id', '=', Auth::user()->id)
+            ->where('video_id', '=', $id);
+
+        if (!$viewed->isNotEmpty()) {
+            view::create([
+                'subscriber_id' => Auth::user()->id,
+                'video_id' => $id
+            ]);
+        }
         $video = video::all()->where('id', '=', $id);
+
         $course = Course::all()->where('id', '=', $video->value('course_id'));
         return view('watch_video', ['course' => $course, 'video' => $video]);
     }
@@ -68,6 +79,14 @@ class VideoController extends Controller
      */
     public function store(Request $request, $id)
     {
+
+        $valid = $request->validate([
+            'description_ar' => ['required', 'max:400'],
+            'description_en' => ['required', 'max:400'],
+            'video' => ['required', 'not_in:not mp4'],
+
+        ]);
+
         $video = new video();
         $video->description_ar = $request->description_ar;
         $video->description_en = $request->description_en;
@@ -107,7 +126,7 @@ class VideoController extends Controller
     public function show(video $video, $id)
     {
         $course = Course::all()->where('id', '=', $id);
-        $videos = video::select('*')->where('course_id', '=', $id)->orderBy('id', 'desc')->get();
+        $videos = video::select('*')->where('course_id', '=', $id)->orderBy('id', 'desc')->paginate(6);
 
         return view('superadmin.show_videos', ['course' => $course, 'videos' => $videos]);
     }

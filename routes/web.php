@@ -20,24 +20,28 @@ Route::post('upload', [UploadController::class, 'upload']);
 
 Route::get('lang/{lang}', [LanguageSwitcherController::class, 'switchLang'])->name('lang.switch');
 
-Route::get('/', function () {
-    $courses = Course::orderBy('id', 'desc')->take(3)->get();
-    return view('index', ['courses' => $courses]);
-})->name('index');
-
 Route::get('/user/login', [SubloginController::class, 'index'])->name('sub_login');
 Route::post('/user/login/check', [SubloginController::class, 'check'])->name('sub_login.check');
 
-Route::get('/more_courses', [CourseController::class, 'sub_show'])->name('course.index');
-Route::get('/more_courses/search', [CourseController::class, 'sub_search'])->name('course.index.search');
+Route::group(['middleware' => 'visitor'], function () {
 
-Route::group(['middleware' => 'is_loged'], function () {
-    Route::get('/user/logout', [SubloginController::class, 'logout'])->name('sub_logout');
-    Route::group([
-        'middleware' => 'is_subscribed'
-    ], function () {
-        Route::get('/coursevideos/{id}', [VideoController::class, 'sub_index'])->name('videocourse');
-        Route::get('/coursevideos/{id}/play', [VideoController::class, 'sub_play'])->name('videocourse.play');
+
+    Route::get('/', function () {
+        $courses = Course::orderBy('id', 'desc')->take(3)->get();
+        return view('index', ['courses' => $courses]);
+    })->name('index');
+
+    Route::get('/more_courses', [CourseController::class, 'sub_show'])->name('course.index');
+    Route::get('/more_courses/search', [CourseController::class, 'sub_search'])->name('course.index.search');
+
+    Route::group(['middleware' => 'is_loged'], function () {
+        Route::get('/user/logout', [SubloginController::class, 'logout'])->name('sub_logout');
+        Route::group([
+            'middleware' => 'is_subscribed'
+        ], function () {
+            Route::get('/coursevideos/{id}', [VideoController::class, 'sub_index'])->name('videocourse');
+            Route::get('/coursevideos/{id}/play', [VideoController::class, 'sub_play'])->name('videocourse.play');
+        });
     });
 });
 
@@ -70,9 +74,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('superadmin/subscriber/{id}/update', [SubscriberController::class, 'update'])->name('subscriber.update');
         Route::put('superadmin/subscriber/store', [SubscriberController::class, 'store'])->name('subscriber.store');
 
-        Route::get('superadmin/subscriber/{id}/receipts', [ReceiptController::class, 'index'])->name('subscriber.receipt');
-        Route::get('superadmin/subscriber/{id}/make_receipt', [ReceiptController::class, 'create'])->name('subscriber.receipt.make_receipt');
-        Route::put('superadmin/subscriber/{id}/receipt/store', [ReceiptController::class, 'store'])->name('subscriber.receipt.store');
+        Route::get('superadmin/subscriber/{id}/subscribtions', [ReceiptController::class, 'index'])->name('subscriber.receipt');
+        Route::get('superadmin/subscriber/{id}/make_subscribtion', [ReceiptController::class, 'create'])->name('subscriber.receipt.make_receipt');
+        Route::get('superadmin/subscriber/{id}/subscribtion/edit', [ReceiptController::class, 'edit'])->name('subscriber.receipt.edit');
+        Route::put('superadmin/subscriber/{id}/subscribtion/update', [ReceiptController::class, 'update'])->name('subscriber.receipt.update');
+        Route::get('superadmin/subscriber/{id}/subscribtion/delete', [ReceiptController::class, 'delete'])->name('subscriber.receipt.delete');
+        Route::put('superadmin/subscriber/{id}/subscribtion/store', [ReceiptController::class, 'store'])->name('subscriber.receipt.store');
 
         Route::get('superadmin/admins', [SubscriberController::class, 'index_admin'])->name('subscriber.admin');
         Route::get('superadmin/admins/show', [SubscriberController::class, 'show_admin'])->name('subscriber.admin.show');

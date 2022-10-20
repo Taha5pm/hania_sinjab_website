@@ -9,7 +9,8 @@ class UploadController extends Controller
 {
     public function upload(Request $request)
     {
-        if ($request->hasFile('video')) {
+
+        if ($request->hasFile('video') && $request->file('video')->getMimeType() == 'video/mp4') {
             $file = $request->file('video');
             $foldername = uniqid() . '-' . now()->timestamp;
             $filename = $file->getClientOriginalName();
@@ -22,7 +23,8 @@ class UploadController extends Controller
             $v->save();
 
             return $foldername;
+        } else {
+            return 'not mp4';
         }
-        return '';
     }
 }

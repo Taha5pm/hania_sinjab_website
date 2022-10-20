@@ -21,7 +21,7 @@
                     <button
                         class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-8 rounded"
                         type="button">
-                        Make Receipt </button>
+                        Make Subscribtion </button>
                 </a>
             </p>
         </div>
@@ -37,14 +37,17 @@
                             <thead class="text-xs text-gray-700 uppercase ">
                                 <tr>
                                     <th scope="col" class="py-3 px-6 bg-gray-50 ">
-                                        Course Name
+                                        Course English Name
                                     </th>
-                                    <th scope="col" class="py-3 px-6  bg-gray-50 ">
+                                    <th scope="col" class="py-3 px-6 bg-gray-50 ">
+                                        Course Arabic Name
+                                    </th>
+                                    {{-- <th scope="col" class="py-3 px-6  bg-gray-50 ">
                                         Amount Paid
                                     </th>
                                     <th scope="col" class="py-3 px-6  bg-gray-50 ">
                                         Amount Left
-                                    </th>
+                                    </th> --}}
                                     <th scope="col" class="py-3 px-6  bg-gray-50 ">
                                         Created At
                                     </th>
@@ -60,9 +63,13 @@
                                     <tr class="border-b border-gray-200 ">
                                         <th scope="row"
                                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 ">
-                                            {{ $courses->where('id', '=', $receipt->course_id)->value('name') }}
+                                            {{ $courses->where('id', '=', $receipt->course_id)->value('name_en') }}
                                         </th>
                                         <th scope="row"
+                                            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 ">
+                                            {{ $courses->where('id', '=', $receipt->course_id)->value('name_ar') }}
+                                        </th>
+                                        {{-- <th scope="row"
                                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 ">
                                             {{ $receipt->amount_paid }} SYP
                                         </th>
@@ -76,24 +83,21 @@
                                                 class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-green-400 ">
                                                 {{ $receipt->amount_left }} SYP
                                             </th>
-                                        @endif
+                                        @endif --}}
 
                                         <th scope="row"
                                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 ">
-                                            {{ $receipt->created_at }}
+                                            20{{ $receipt->created_at->format('y-m-d') }}
                                         </th>
                                         <th scope="row"
                                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 ">
                                             {{ $receipt->expire_date }}
 
-                                            {{-- $date1 = Carbon::createFromFormat('Y-m-d', Carbon::now()->toDateString('Y-m-d'));
-                                            $date2 = Carbon::createFromFormat('Y-m-d', '2022-11-08');
-                                            dd($date1->gte($date2)); --}}
                                         </th>
 
-                                        {{-- <th scope="row"
+                                        <th scope="row"
                                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50  ">
-                                            <a href="{{ route('superadmin.subscriber.edit', $sub->id) }}">
+                                            <a href="{{ route('superadmin.subscriber.receipt.edit', $receipt->id) }}">
                                                 <button
                                                     class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold  py-2 px-6 rounded">
                                                     Edit
@@ -102,13 +106,13 @@
                                         </th>
                                         <th scope="row"
                                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50  ">
-                                            <a href="{{ route('superadmin.subscriber.edit', $sub->id) }}">
+                                            <a href="{{ route('superadmin.subscriber.receipt.delete', $receipt->id) }}">
                                                 <button
-                                                    class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold  py-2 px-6 rounded">
-                                                    Receipts
+                                                    class="shadow bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white font-bold  py-2 px-6 rounded">
+                                                    Delete
                                                 </button>
                                             </a>
-                                        </th> --}}
+                                        </th>
                                     </tr>
                                 @endforeach
                             </tbody>

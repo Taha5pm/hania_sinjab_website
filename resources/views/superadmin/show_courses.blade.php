@@ -19,9 +19,9 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-10xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
+                <div class="p-10 bg-white border-b border-gray-200">
 
                     <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
                         <table class="w-full text-sm text-left text-gray-800 ">
@@ -45,9 +45,9 @@
                                     <th scope="col" class="py-3 px-6  bg-gray-50 ">
                                         English Field
                                     </th>
-                                    <th scope="col" class="py-3 px-6  bg-gray-50 ">
+                                    {{-- <th scope="col" class="py-3 px-6  bg-gray-50 ">
                                         Subscription Price
-                                    </th>
+                                    </th> --}}
                                     <th>
                                     </th>
                                 </tr>
@@ -79,10 +79,10 @@
                                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 ">
                                             {{ $course->field_en }}
                                         </th>
-                                        <th scope="row"
+                                        {{-- <th scope="row"
                                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 ">
                                             {{ $course->price }} SYP
-                                        </th>
+                                        </th> --}}
                                         <th scope="row"
                                             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50  ">
                                             <a href="{{ route('superadmin.video', $course->id) }}">
@@ -112,6 +112,11 @@
                                 @endforeach
                             </tbody>
                         </table>
+                    </div>
+                    <div class="container">
+                        <div>
+                            {!! $courses->links() !!}
+                        </div>
                     </div>
                 </div>
             </div>

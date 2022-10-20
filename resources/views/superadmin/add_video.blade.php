@@ -37,6 +37,22 @@
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="flex-wrap -mx-3 mb-6">
+                            @if ($errors->any())
+                                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <label
+                                                    class="block uppercase tracking-wide text-red-700 text-xs font-bold mb-2"
+                                                    for="name_ar">
+                                                    <li>{{ $error }}</li>
+
+                                                </label>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </div>
+                            @endif
                             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                     for="course_name">
@@ -54,7 +70,8 @@
                                 </label>
                                 <textarea
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-5 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="description_ar" name="description_ar" rows="3" cols="3" required></textarea>
+                                    id="description_ar" name="description_ar" rows="3" cols="3" required>{{ old('description_ar') }}
+                                </textarea>
                             </div>
                             <div class="w-full md:w-1/2 px-3">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -63,7 +80,7 @@
                                 </label>
                                 <textarea
                                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-5 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="description_en" name="description_en" rows="3" cols="3" required></textarea>
+                                    id="description_en" name="description_en" rows="3" cols="3" required>{{ old('description_en') }}</textarea>
                             </div>
                             <div class="w-full md:w-1/2 px-3">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
