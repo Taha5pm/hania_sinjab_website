@@ -80,6 +80,18 @@ class CourseController extends Controller
         $courses = Course::select('*')->orderBy('id', 'desc')->paginate(6);
         return view('superadmin.show_courses', ['courses' => $courses]);
     }
+
+    public function search(Request $request)
+    {
+
+        $courses = Course::where('name_ar', 'like', '%' . $request->search . '%')->paginate(6);
+
+        if (count($courses) == 0) {
+            $courses = Course::where('name_en', 'like', '%' . $request->search . '%')->paginate(6);
+        }
+        return view('superadmin.show_courses', ['courses' => $courses]);
+    }
+
     /**
      * Display the specified resource.
      *
@@ -93,7 +105,11 @@ class CourseController extends Controller
     }
     public function sub_search(Request $request)
     {
-        $courses = Course::where('name', 'like', '%' . $request->search . '%')->paginate(6);
+        $courses = Course::where('name_ar', 'like', '%' . $request->search . '%')->paginate(6);
+
+        if (count($courses) == 0) {
+            $courses = Course::where('name_en', 'like', '%' . $request->search . '%')->paginate(6);
+        }
         return view('course', ['courses' => $courses]);
     }
 

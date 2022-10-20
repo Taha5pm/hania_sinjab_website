@@ -130,6 +130,14 @@ class VideoController extends Controller
 
         return view('superadmin.show_videos', ['course' => $course, 'videos' => $videos]);
     }
+    public function search(Request $request, $id)
+    {
+        $course = Course::all()->where('id', '=', $id);
+
+        $videos = video::where('course_id', '=', $id)->where('title', 'like', '%' . $request->search . '%')->paginate(6);
+
+        return view('superadmin.show_videos', ['course' => $course, 'videos' => $videos]);
+    }
 
     /**
      * Show the form for editing the specified resource.

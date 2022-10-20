@@ -53,6 +53,22 @@ class SubscriberController extends Controller
         $sub_sub = receipt::all();
         return view('superadmin.show_subscribers', ['subs' => $subs, 'sub_sub' => $sub_sub]);
     }
+    public function search(Request $request)
+    {
+
+        $subs = User::where('role', '=', 'subscriber')->where(DB::raw("concat(fname, ' ', lname)"), 'like', '%' . $request->search . '%')->paginate(6);
+        $sub_sub = receipt::all();
+
+        return view('superadmin.show_subscribers', ['subs' => $subs, 'sub_sub' => $sub_sub]);
+    }
+    public function search_admin(Request $request)
+    {
+
+        $admins = User::where('role', '=', 'admin')->where(DB::raw("concat(fname, ' ', lname)"), 'like', '%' . $request->search . '%')->paginate(6);
+
+
+        return view('superadmin.show_admins', ['admins' => $admins]);
+    }
     public function show_admin()
     {
         $admins = User::select('*')->where('role', '=', 'admin')->orderBy('id', 'desc')->paginate(6);

@@ -18,11 +18,21 @@
         </div>
     </x-slot>
 
+
     <div class="py-12">
+
         <div class="max-w-10xl mx-auto sm:px-6 lg:px-8">
+            <form action="{{ route('superadmin.course.search') }}" class="form-horizontal" method="get">
+                <div class="input-group no-border" id="portfolio-filter">
+                    <input type="text" name="search" placeholder="Search ... ">
+                    <button type="submit" class="btn align-item-right">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </form>
+            <br>
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-10 bg-white border-b border-gray-200">
-
                     <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
                         <table class="w-full text-sm text-left text-gray-800 ">
                             <thead class="text-xs text-gray-700 uppercase ">

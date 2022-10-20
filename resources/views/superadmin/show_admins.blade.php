@@ -20,6 +20,15 @@
 
     <div class="py-12">
         <div class="max-w-10xl mx-auto sm:px-6 lg:px-8">
+            <form action="{{ route('superadmin.subscriber.admin.search') }}" class="form-horizontal" method="get">
+                <div class="input-group no-border" id="portfolio-filter">
+                    <input type="text" name="search" placeholder="Search ... ">
+                    <button type="submit" class="btn align-item-right">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </form>
+            <br>
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
 
