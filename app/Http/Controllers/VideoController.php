@@ -109,9 +109,9 @@ class VideoController extends Controller
                 mkdir(public_path('videos/' . $course_name . '/thumbnails'));
             }
 
-
+            $video_name = explode('.', $tempvideo->filename);
+            $video->title = $video_name[0];
             $tempvideo->delete();
-            $video->title = $tempvideo->filename;
         }
         $video->save();
         return redirect()->route('superadmin.video', $id);

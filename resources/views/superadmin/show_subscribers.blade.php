@@ -23,8 +23,9 @@
             <form action="{{ route('superadmin.subscriber.search') }}" class="form-horizontal" method="get">
                 <div class="input-group no-border" id="portfolio-filter">
                     <input type="text" name="search" placeholder="Search ... ">
-                    <button type="submit" class="btn align-item-right">
-                        <i class="fas fa-search"></i>
+                    <button type="submit"
+                        class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold  py-2 px-6 rounded">
+                        GO
                     </button>
                 </div>
             </form>
