@@ -15,6 +15,6 @@ class AppLayout extends Component
     public function render()
     {
 
-        return view(Auth::user()->role . '.layouts.app');
+        return view('superadmin.layouts.app');
     }
 }

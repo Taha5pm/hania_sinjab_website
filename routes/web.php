@@ -47,50 +47,53 @@ Route::group(['middleware' => 'visitor'], function () {
 
 Route::group(['middleware' => 'auth'], function () {
     Route::group([
-        'perfix' => '/superadmin',
-        'middleware' => 'is_superadmin',
+        'prefix' => 'superadmin',
+        'middleware' => 'is_superadmin:Both',
         'as'         => 'superadmin.',
     ], function () {
-        Route::get('superadmin/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-        Route::get('superadmin/courses', [CourseController::class, 'index'])->name('course');
-        Route::put('superadmin/courses/store', [CourseController::class, 'store'])->name('course.store');
-        Route::put('superadmin/courses/{id}/update', [CourseController::class, 'update'])->name('course.update');
-        Route::get('superadmin/courses/show', [CourseController::class, 'show'])->name('course.show');
-        Route::get('superadmin/courses/search', [CourseController::class, 'search'])->name('course.search');
-        Route::get('superadmin/courses/{id}/edit', [CourseController::class, 'edit'])->name('course.edit');
-        Route::get('superadmin/courses/{id}/delete', [CourseController::class, 'delete'])->name('course.delete');
+        Route::get('courses', [CourseController::class, 'index'])->name('course');
+        Route::put('courses/store', [CourseController::class, 'store'])->name('course.store');
+        Route::put('courses/{id}/update', [CourseController::class, 'update'])->name('course.update');
+        Route::get('courses/show', [CourseController::class, 'show'])->name('course.show');
+        Route::get('courses/search', [CourseController::class, 'search'])->name('course.search');
+        Route::get('courses/{id}/edit', [CourseController::class, 'edit'])->name('course.edit');
+        Route::get('courses/{id}/delete', [CourseController::class, 'delete'])->name('course.delete');
 
-        Route::get('superadmin/courses/{id}/add_video', [VideoController::class, 'index'])->name('video');
-        Route::get('superadmin/courses/{id}/add_video/show', [VideoController::class, 'show'])->name('video.show');
-        Route::get('superadmin/courses/{id}/add_video/search', [VideoController::class, 'search'])->name('video.search');
-        Route::get('superadmin/courses/{id}/add_video/delete', [VideoController::class, 'delete'])->name('video.delete');
-        Route::get('superadmin/courses/{id}/add_video/edit', [VideoController::class, 'edit'])->name('video.edit');
-        Route::put('superadmin/courses/{id}/add_video/store', [VideoController::class, 'store'])->name('video.store');
-        Route::put('superadmin/courses/{id}/video/update', [VideoController::class, 'update'])->name('video.update');
+        Route::get('courses/{id}/add_video', [VideoController::class, 'index'])->name('video');
+        Route::get('courses/{id}/add_video/show', [VideoController::class, 'show'])->name('video.show');
+        Route::get('courses/{id}/add_video/search', [VideoController::class, 'search'])->name('video.search');
+        Route::get('courses/{id}/add_video/delete', [VideoController::class, 'delete'])->name('video.delete');
+        Route::get('courses/{id}/add_video/edit', [VideoController::class, 'edit'])->name('video.edit');
+        Route::put('courses/{id}/add_video/store', [VideoController::class, 'store'])->name('video.store');
+        Route::put('courses/{id}/video/update', [VideoController::class, 'update'])->name('video.update');
 
-        Route::get('superadmin/subscribers', [SubscriberController::class, 'index'])->name('subscriber');
-        Route::get('superadmin/subscribers/show', [SubscriberController::class, 'show'])->name('subscriber.show');
-        Route::get('superadmin/subscribers/search', [SubscriberController::class, 'search'])->name('subscriber.search');
-        Route::get('superadmin/subscriber/{id}/edit', [SubscriberController::class, 'edit'])->name('subscriber.edit');
-        Route::get('superadmin/subscriber/{id}/delete', [SubscriberController::class, 'delete'])->name('subscriber.delete');
-        Route::put('superadmin/subscriber/{id}/update', [SubscriberController::class, 'update'])->name('subscriber.update');
-        Route::put('superadmin/subscriber/store', [SubscriberController::class, 'store'])->name('subscriber.store');
+        Route::get('subscribers', [SubscriberController::class, 'index'])->name('subscriber');
+        Route::get('subscribers/show', [SubscriberController::class, 'show'])->name('subscriber.show');
+        Route::get('subscribers/search', [SubscriberController::class, 'search'])->name('subscriber.search');
+        Route::get('subscriber/{id}/edit', [SubscriberController::class, 'edit'])->name('subscriber.edit');
+        Route::get('subscriber/{id}/delete', [SubscriberController::class, 'delete'])->name('subscriber.delete');
+        Route::put('subscriber/{id}/update', [SubscriberController::class, 'update'])->name('subscriber.update');
+        Route::put('subscriber/store', [SubscriberController::class, 'store'])->name('subscriber.store');
 
-        Route::get('superadmin/subscriber/{id}/subscribtions', [ReceiptController::class, 'index'])->name('subscriber.receipt');
-        Route::get('superadmin/subscriber/{id}/make_subscribtion', [ReceiptController::class, 'create'])->name('subscriber.receipt.make_receipt');
-        Route::get('superadmin/subscriber/{id}/subscribtion/edit', [ReceiptController::class, 'edit'])->name('subscriber.receipt.edit');
-        Route::put('superadmin/subscriber/{id}/subscribtion/update', [ReceiptController::class, 'update'])->name('subscriber.receipt.update');
-        Route::get('superadmin/subscriber/{id}/subscribtion/delete', [ReceiptController::class, 'delete'])->name('subscriber.receipt.delete');
-        Route::put('superadmin/subscriber/{id}/subscribtion/store', [ReceiptController::class, 'store'])->name('subscriber.receipt.store');
+        Route::get('subscriber/{id}/subscribtions', [ReceiptController::class, 'index'])->name('subscriber.receipt');
+        Route::get('subscriber/{id}/make_subscribtion', [ReceiptController::class, 'create'])->name('subscriber.receipt.make_receipt');
+        Route::get('subscriber/{id}/subscribtion/edit', [ReceiptController::class, 'edit'])->name('subscriber.receipt.edit');
+        Route::put('subscriber/{id}/subscribtion/update', [ReceiptController::class, 'update'])->name('subscriber.receipt.update');
+        Route::get('subscriber/{id}/subscribtion/delete', [ReceiptController::class, 'delete'])->name('subscriber.receipt.delete');
+        Route::put('subscriber/{id}/subscribtion/store', [ReceiptController::class, 'store'])->name('subscriber.receipt.store');
 
-        Route::get('superadmin/admins', [SubscriberController::class, 'index_admin'])->name('subscriber.admin');
-        Route::get('superadmin/admins/show', [SubscriberController::class, 'show_admin'])->name('subscriber.admin.show');
-        Route::get('superadmin/admins/search', [SubscriberController::class, 'search_admin'])->name('subscriber.admin.search');
-        Route::get('superadmin/admins/{id}/delete', [SubscriberController::class, 'delete'])->name('subscriber.admin.delete');
-        Route::get('superadmin/admin/{id}/edit', [SubscriberController::class, 'edit'])->name('subscriber.admin.edit');
-        Route::put('superadmin/admin/{id}/update', [SubscriberController::class, 'update'])->name('subscriber.admin.update');
-        Route::put('superadmin/admin/store', [SubscriberController::class, 'store'])->name('subscriber.admin.store');
+
+        Route::group(['middleware' => 'is_superadmin:superadminOnly'], function () {
+            Route::get('admins', [SubscriberController::class, 'index_admin'])->name('subscriber.admin');
+            Route::get('admins/show', [SubscriberController::class, 'show_admin'])->name('subscriber.admin.show');
+            Route::get('admins/search', [SubscriberController::class, 'search_admin'])->name('subscriber.admin.search');
+            Route::get('admins/{id}/delete', [SubscriberController::class, 'delete'])->name('subscriber.admin.delete');
+            Route::get('admin/{id}/edit', [SubscriberController::class, 'edit'])->name('subscriber.admin.edit');
+            Route::put('admin/{id}/update', [SubscriberController::class, 'update'])->name('subscriber.admin.update');
+            Route::put('admin/store', [SubscriberController::class, 'store'])->name('subscriber.admin.store');
+        });
     });
 });
 
